@@ -31,88 +31,82 @@ Este repositório contém o Documento de Design de Jogo (GDD) para *Ichigo: Mem�
 - **Título:** Ichigo: Memórias do Oceano
 
 ### 1.2. Plataforma
-- **Plataforma alvo:** PC (Windows, Linux), exportável para Web/HTML5.
-- **Engine:** Godot Engine 4.x (GDScript)
+- **Plataforma alvo:** PC
+- **Engine:** Godot Engine (GDScript)
 
 ### 1.3. Gênero
 - **Gênero:** Plataforma 2D / Jogo narrativo artístico (walking + light puzzle)
 
 ### 1.4. Público-Alvo
-- Jogadores de jogos independentes e narrativos (15+)
+- Jogadores de jogos independentes e narrativos
 - Estudantes e pesquisadores de game design e engenharia de software
 - Público interessado em narrativas simbólicas e experiências contemplativas
 
 ### 1.5. Visão Geral do Jogo
-- *Ichigo: Memórias do Oceano* é um jogo 2D side-scroller onde o jogador controla Ichigo, uma criança sobrevivente de um tsunami. O mundo muda *continuamente* conforme o personagem caminha para a direita: três grandes momentos (Ecos do Silêncio → Ruínas do Oceano → Horizonte de Esperança). As mudanças são geridas por um **motor narrativo** implementado como uma **FSM** construída com estruturas de dados (listas, filas, dicionários/grafos). Colecionáveis têm função prática e simbólica (resolver obstáculos e avançar) e a experiência é construída sem diálogos extensos — com frases curtas e simbolismo.
+- *Ichigo: Memórias do Oceano* é um jogo 2D onde o jogador controla Ichigo, uma criança sobrevivente de um tsunami. O mundo muda conforme o personagem caminha para a direita: três grandes momentos (Ecos do Silêncio → Ruínas do Oceano → Horizonte de Esperança). As mudanças são geridas por um **motor narrativo** implementado como uma **FSM** construída com estruturas de dados. Colecionáveis têm função prática e simbólica (resolver obstáculos e avançar) e a experiência é construída sem diálogos extensos — com frases curtas e simbolismo.
 
 ---
 
 ## 2. Mecânicas de Jogo
 
 ### 2.1. Regras Básicas
-- O jogador controla Ichigo em visão lateral 2D. Objetivo final: alcançar a casa no horizonte (reencuentro com os pais).
-- O personagem deve progredir para a direita (exploração lateral permitida à esquerda).
-- Obstáculos bloqueiam o caminho; cada obstáculo tem um **objeto funcional** que permite superá-lo (ex.: pá para tapar buraco).
-- Colecionáveis são necessários em pontos-chave (por exemplo, colecionar conchas para abrir a rocha final).
-- Não há sistema de combate complexo. O jogo prioriza resolução de obstáculos e narrativa ambiental.
-- Sistema de checkpoints: 1–2 por “fase/trecho” (total de ~5 checkpoints no mapa).
+- O jogador controla Ichigo em visão lateral 2D. Objetivo final: alcançar a casa no horizonte (reencontro com os pais);
+- O personagem deve progredir para a direita (exploração lateral poderá ser permitida à esquerda);
+- Obstáculos bloqueiam o caminho, de forma que cada obstáculo tem um **objeto funcional** que permite superá-lo (por exemplo, pá para tapar buraco);
+- Colecionáveis são necessários em pontos-chave (por exemplo, colecionar conchas para abrir a rocha final);
+- Não há sistema de combate complexo, o jogo prioriza resolução de obstáculos e narrativa ambiental;
+- Sistema de checkpoints: 1–2 por “fase/trecho” (total de cerca de 5 checkpoints no mapa).
 
 ### 2.2. Controles
 - **PC (teclado):**
-  - Setas / A D — mover (left/right)
-  - W / Espaço — pular
-  - S / Ctrl — interagir / usar item (quando aplicável)
-  - E — pegar / inspecionar objeto
-  - Esc — menu / pause
-- O design de controle é simples e responsivo; todas as ações têm feedback visual e sonoro.
+  - Setas / A D — mover (esquerda/direita);
+  - W / Espaço — pular;
+  - S / Ctrl — interagir / usar item;
+  - E — pegar / inspecionar objeto;
+  - Esc — menu / pause;
+- O design de controle é simples e responsivo; todas as ações devem ter feedback visual e sonoro.
 
 ### 2.3. Objetivos e Metas
 - Objetivo primário: Guiar Ichigo até a casa no horizonte, reunindo objetos simbólicos e superando obstáculos.
-- Objetivos secundários: coletar conchas e memórias que desbloqueiam pontos de progressão e aprimoram final narrativo.
+- Objetivos secundários: Coletar conchas e memórias que desbloqueiam pontos de progressão e aprimoram final narrativo.
 
 ### 2.4. Sistema de Pontuação
-- Não há foco em “pontuação” competitiva. Sistema de registro de colecionáveis:
+- Não há foco em “pontuação” competitiva. Mas conta-se com um sistema de registro de colecionáveis:
   - Cada concha / item é contado e exibido no HUD (meta: coleção completa ativa evento final).
-- Estatísticas gravadas para telemetria: tempo de fase, itens coletados, número de mortes/voltas a checkpoint.
+- Estatísticas gravadas para telemetria: tempo de fase, itens coletados.
 
 ### 2.5. Mecânicas de Interação
-- Pegar (E): colecionáveis/objetos.
-- Usar (S/Ctrl): ativa os objetos no mundo (ex.: usar pá no buraco).
-- Interagir com pontos narrativos: desencadeia frases curtas no HUD e efeitos de estado (mudança de cor, música).
+- Pegar (E): colecionáveis/objetos;
+- Usar (S/Ctrl): ativa/permite utilizar os objetos no mundo (por exemplo, usar pá no buraco);
+- Interagir com pontos narrativos: desencadeia frases curtas e efeitos de estado (mudança de cor, música).
 - Checkpoints: tocar para salvar estado; fracasso retrocede ao checkpoint.
 
 ### 2.6. Sistemas de Progressão e Recompensas
-- Progressão linear visual (mundo contínuo em três trechos).
-- Recompensas são funcionais (objetos que desbloqueiam travas) e narrativas (frases + visuais).
+- Progressão linear visual (mundo contínuo em três trechos);
+- Recompensas são funcionais (objetos que desbloqueiam travas) e narrativas (frases + visuais);
 - Reuso do motor narrativo para alterar spawn rate, obstáculos e trilha sonora conforme o estado do mundo.
 
-### 2.7. Inteligência Artificial (IA)
-- IA básica para **hazards**:
-  - Caranguejos: padrão simples de marcha lateral; colidir empurra o jogador.
-  - Animais assustados (fase 2): movimento errático, empurram Ichigo se em rota de colisão.
-- IA não é adversarial: comportamento previsível e telegráfico (sinais visuais/sonoros).
-
-### 2.8. Dinâmicas de Jogo
-- Mecânica principal = exploração + resolução de obstáculos com objetos.
+### 2.7. Dinâmicas de Jogo
+- Mecânica principal = exploração + resolução de obstáculos com objetos;
 - Dinâmicas emergentes: escolha por voltar para pegar objetos opcionais vs seguir direto; gerenciamento de recursos (usar objeto no local certo).
 
-### 2.9. Economia do Jogo
-- Não aplicável (jogo não possui microtransações). Inventário simples de itens (máx 6 slots), todos coletáveis no mundo.
+### 2.8. Economia do Jogo
+- Não aplicável (jogo não possui microtransações). Inventário simples de itens (de, no máximo, 6 slots), todos coletáveis no mundo.
 
 ---
 
 ## 3. Narrativa
 
 ### 3.1. História Principal (resumo)
-- Ichigo sobrevive a um tsunami. A jornada é sobre atravessar o mundo transformado (silêncio, ruína, renascimento) até reencontrar a casa e os pais. A história é contada por **texto curto** em momentos-chave e por alterações ambientais.
+- Ichigo sobrevive a um tsunami. A jornada é sobre atravessar o mundo transformado até reencontrar a casa e os pais. A história é contada por **textos curtos** em momentos-chave e por alterações ambientais.
 
 ### 3.2. Personagens
-1. **Ichigo** — protagonista infantil, sem gênero definido (design neutro). Curioso, resiliente.
-2. **Pais (silhuetas)** — não jogáveis; aparecem no final como objetivo emocional.
-3. **Ambiente** — "personificado" (mar, vento, destroços) que atua quase como personagem narrativo.
+1. **Ichigo** — protagonista infantil, sem gênero definido (design neutro);
+2. **Pais (silhuetas)** — não jogáveis; aparecem no final como objetivo emocional;
+3. **Ambiente** — "personificado" (mar, vento, destroços) que atua quase como personagem narrativo;
 
 ### 3.3. Cenários
-- Três trechos contínuos (veja seção de níveis):
+- Três trechos contínuos:
   - *Ecos do Silêncio* — praia com destroços, calma enganosa.
   - *Ruínas do Oceano* — destruição concreta, obstáculos reais.
   - *Horizonte de Esperança* — renascimento com vegetação e luz.
@@ -121,20 +115,54 @@ Este repositório contém o Documento de Design de Jogo (GDD) para *Ichigo: Mem�
 - Missões principais são implícitas: avançar no mapa, coletar objetos necessários.
 - Não há quests secundárias convencionais; objetivos opcionais: colecionar todas as conchas para desbloqueio simbólico final.
 
-### 3.5. Roteiro e Diálogos (excertos)
-- Textos curtos exibidos em momentos-chave:
-  - “Um tsunami invade a casa de Ichigo…”
-  - “Sem seus pais à vista, Ichigo se sente só.”
-  - “Mesmo molhado, ainda guarda o calor de casa.”
-  - “No horizonte… uma luz familiar.”
-- Não há dublagem; todo o texto é minimalista e poético.
+### 3.5. Roteiro e Diálogos
+- Fase 1 — Ecos do Silêncio (Ambiente: praia calma, céu cinza-azulado, som distante do mar)
+  - **Ato 1 — Despertar**:
+    - [Texto na tela]: “Um tsunami invade a casa de Ichigo...” + “Sem seus pais à vista, Ichigo se sente só.”
+    - Ichigo (em pensamento): “A água... levou tudo...” + “Mas... ainda ouço o som do mar.” + “Será que eles estão lá fora... me esperando?”
+  - **Ato 2 — Primeiros Passos**:
+    - Ao coletar uma concha: “Essa concha... igual àquela que eu encontrava com papai e mamãe.”
+    - Ao passar por troncos e poças: “Preciso atravessar... com cuidado.”
+    - Ao encontrar brinquedo quebrado: “Meu baldinho... talvez ainda dê pra usar.” (usado para construir ponte sobre um buraco)
+  - **Ato 3 — Transição para a fase 2**:
+    - [Cena de transição]: Som: trovões distantes, vento aumenta.
+    - [Texto na tela]: “As memórias se misturam ao medo.” + “O mar se agita novamente...”
+    - Ichigo (em pensamento): “Por que o céu ficou tão escuro...?”
+
+- Fase 2 — Ruínas do Oceano (Ambiente: céu tempestuoso, vento forte, objetos flutuando)
+  - **Ato 1 — Reencontro com o Medo**:
+    - [Texto na tela]: “O mar não esqueceu...”
+    - Ichigo (em pensamento): “Tudo está quebrado... como se o tempo tivesse parado.” + “Eu lembro... o barulho, o medo, o vento levando tudo.” + “Mas... preciso continuar.”
+  - **Ato 2 — Obstáculos Maiores**:
+    - Ao ver um barco tombado: “Era o barco do velho Kaito... ele sempre sorria.”
+    - Ao encontrar uma lanterna: “Posso usá-la para ver melhor.” (ativa caminho oculto)
+    - Ao ver brinquedo flutuando (urso): “Meu ursinho... pensei que nunca mais o veria.” (coletar acalma a música)
+    - Ao cair na lama (precisa de botas): “A lama puxa... mas não posso parar agora.”
+  - **Ato 3 — Transição**:
+    - [Cena de transição]: Som: trovões cessam, som suave de pássaros + Luz: o sol começa a atravessar as nuvens.
+    - Ichigo (em pensamento): “O vento está mudando... talvez... eu também esteja.”
+
+- Fase 3 — Horizonte de Esperança (Ambiente: cores quentes, flores, céu limpo)
+  - **Ato 1 — Caminho da Luz**:
+    - [Texto na tela]: “O oceano silencia, e a terra respira novamente.”
+    - Ichigo (em pensamento): “As flores... voltaram.” + “O ar está leve... como se o mundo respirasse comigo.”
+    - Ao encontrar foto rasgada: “Mamãe... papai... ainda estão aqui, em algum lugar.”
+    - Ao achar livro encharcado: “Ainda consigo ler... é nossa história.”
+    - Ao atravessar rio raso: “A água agora é calma... não quer mais me levar.”
+  - **Ato 2 — Último Desafio**:
+    - Obstáculo (grande pedra): “Ela é pesada... mas se eu juntar todas as conchas...” (abre passagem)
+    - Ao subir duna final: “O sol... o som... algo familiar.”
+  - **Ato 3 — Encerramento**
+    - [Cena Final]: “Ichigo sobe a duna. O vento carrega o som de risadas conhecidas.” + “Ao longe, uma casa reconstruída. Duas silhuetas acenam.”
+    - Ichigo (em pensamento): “Mamãe... papai... eu voltei.” + “O mar me trouxe de volta.”
+    - [Tela final]: “FIM — Mas o oceano nunca esquece quem aprende a ouvi-lo.”
 
 ---
 
 ## 4. Design de Níveis
 
 ### 4.1. Estrutura dos Níveis
-- O “nível” é um único mapa horizontal contínuo dividido em trechos (fase1 → fase2 → fase3). Cada trecho tem checkpoints. Total de obstáculos planejados: 21 (6/8/7 por trecho).
+- O “nível” é um único mapa horizontal contínuo dividido em trechos (fase 1 → fase 2 → fase 3). Cada trecho tem checkpoints. Total de obstáculos planejados: 21 (6/8/7 por trecho).
 
 ### 4.2. Mapas e Layouts
 - **Mapa contínuo (visão lateral 2D, 16:9):**
@@ -184,23 +212,34 @@ Obs.: números (x1/x2) são contagem sugerida por trecho; durante implementaçã
 ## 5. Arte e Estilo Visual
 
 ### 5.1. Estilo Artístico
-- **Traço:** estilizado/cartoon indie com pintura digital (concept-art feel).  
-- **Abordagem:** camadas de parallax para profundidade; elementos com silhuetas fortes para leitura de gameplay.
+- **Traço:** pixel art;
+- **Ferramenta:** Aseprite para criação e animação de sprites.
 
 ### 5.2. Personagens e Animações
-- **Ichigo:** chibi / simplificado, paleta suave; sprites: idle, walk (4 frames), run (6 frames), jump (2-3 frames), interact.  
-- **Animações:** fluídas, sem excesso; feedback claro para pulo, pegar e uso de item.
+- **Ichigo:** paleta suave (tons de azul, areia e rosa-claro, com destaque para o cabelo e roupa).
+- **Sprites principais:**
+  - Idle (4 frames) – respiração e movimento de cabelo.
+  - Walk (6 frames) – caminhada leve, com braços e cabeça acompanhando.
+  - Run (8 frames) – movimento fluido, com vento visível no cabelo.
+  - Jump (3 frames) – impulso, ápice e aterrissagem.
+  - Interact (4 frames) – curvar, empurrar ou pegar itens.
+  - Tamanho base: 48x48 px (expansível para 64x64 px dependendo do cenário).
 
 ### 5.3. Cenários e Ambientes
-- 3 conjuntos de BGs (clean + blueprint anotado).  
-- Elementos interativos (troncos, buracos, destroços) em camada fg; objetos decorativos em bg.
+- Cada fase (estado FSM) terá um conjunto de tilesets e planos de fundo:
+  - Ecos do Silêncio: areia, conchas, mar calmo, luz difusa;
+  - Ruínas do Oceano: céu escuro, ondas agressivas, destroços, chuva pixelada;
+  - Horizonte de Esperança: luz dourada, flores surgindo, vegetação reconstituída.
 
 ### 5.4. Interface do Usuário (UI)
-- HUD minimalista: contador de colecionáveis (ícone + número), indicador de item equipado, ícone de checkpoint.  
-- Caixa de texto translúcida para frases curtas (aparece no canto superior/esquerdo por 3–4s).
+- **HUD minimalista:**
+  - Contador de colecionáveis (ícone de concha + número);
+  - Indicador de item ativo (pequeno slot no canto inferior direito);
+  - Ícone de checkpoint (luz suave ou brilho azul);
+  - Caixa de texto: translúcida, pixelada, com bordas suaves (aparece no canto superior esquerdo, exibe frases curtas (3–4 segundos), com fonte Press Start 2P (ou similar), 8px, cor branca com sombra leve).
 
 ### 5.5. Paleta de Cores
-- *Ecos do Silêncio:* azuis pálidos e cinzas suaves.  
+- *Ecos do Silêncio:* azuis pálidos, areia fria, brancos suaves e cinzas suaves.  
 - *Ruínas do Oceano:* tons frios, contraste alto, saturação abaixada.  
 - *Horizonte de Esperança:* tons quentes (dourado, verde suave), saturação aumenta progressivamente.
 
@@ -209,19 +248,15 @@ Obs.: números (x1/x2) são contagem sugerida por trecho; durante implementaçã
 ## 6. Áudio
 
 ### 6.1. Trilha Sonora
-- Trilha adaptativa com camadas (vertical mixing): 
-  - Layer calmo, layer tensão, layer esperança — mixado conforme FSM.
-- Compositor: trilhas simples e melódicas, instrumentos acústicos e pads digitais.
-
+- Trilha adaptativa com camada: 
+  - Layer calmo, layer tensão, layer esperança — conforme FSM.
+  - 
 ### 6.2. Efeitos Sonoros
-- FX por ação: passo na areia, splash, pulo, coletar item, usar item, ambiente (vento, chuva).  
-- Sons de feedback (ping ao coletar, som grave ao falhar em hazard).
+- Por ação: passo na areia, splash, pulo, coletar item, usar item, ambiente (vento, chuva);
+- Sons de feedback (por exemplo, ping ao coletar).
 
 ### 6.3. Dublagem
 - Não há dublagem; fala é expressa em texto curto.
-
-### 6.4. Ambiente Sonoro
-- Ambientes com SFX 3D estéreo (vento direcional, ondas ao longe, trovões pontuais).
 
 ---
 
@@ -242,10 +277,9 @@ Obs.: números (x1/x2) são contagem sugerida por trecho; durante implementaçã
 
 ### 8.1. Modelo de Negócio
 - Projeto acadêmico / protótipo — sem monetização prevista.  
-- Se houver versão comercial futura: possível venda única (pay-to-download) e/ou venda de cosmetic DLC. Não há consumíveis que impactem gameplay.
 
 ### 8.2. Itens Pagos
-- Não aplicável na versão do TCC. Qualquer modelo futuro será planejado respeitando licenciamento dos assets.
+- Não aplicável.
 
 ---
 
@@ -255,72 +289,9 @@ Obs.: números (x1/x2) são contagem sugerida por trecho; durante implementaçã
 - **Testes Unitários (técnicos):** FSM transitions, validação de eventos (testes em GDScript/pseudotests).  
 - **Testes de Integração:** troca de estados altera cenários, trilha e spawn.  
 - **Playtests (usability):** 12–20 jogadores (testes de compreensão narrativa e dificuldade).  
-- **A/B:** versão com motor narrativo ativo vs inativo (medir reconhecimento de mudança e engajamento).
-
-**Cronograma de testes (sugestão):**
-- Protótipo alfa (mecânica): 2 semanas
-- Testes internos (ajustes): 2 semanas
-- Playtest externos (12–20 jogadores): 2 semanas
-- Iterações finais: 2 semanas
 
 ### 9.2. Feedback dos Jogadores
 - Coleta via formulário (Likert scale + comentários abertos).  
 - Métricas: compreensão narrativa (percentual que reconhece mudança), taxa de conclusão, taxa de repetição de checkpoints.
 
 ---
-
-## 10. Conclusão e Próximos Passos
-
-### 10.1. Sumário
-- *Ichigo* propõe um motor narrativo baseado em FSM e estruturas de dados aplicadas a um jogo 2D de plataforma narrativo. O diferencial é a mudança contínua do ambiente guiada por estados ambientais.
-
-### 10.2. Próximos Passos
-1. **Criação de Assets:** sprites, backgrounds (clean + blueprint), SFX.  
-2. **Implementação FSM:** modelagem com estruturas de dados e integração com áudio/visual.  
-3. **Integração de Níveis:** montar mapa contínuo e checkpoints.  
-4. **Testes:** correções e balanceamento.  
-5. **Playtests:** coleta de dados e ajustes finais.  
-
----
-
-## 11. Apêndices técnicos: FSM e Estruturas de Dados
-
-### 11.1. Visão Geral do Motor Narrativo (FSM)
-- **Estados principais:** `EcosDoSilencio`, `RuinasDoOceano`, `HorizonteDeEsperanca`.  
-- **Eventos:** `collect_item`, `reach_checkpoint`, `use_item`, `time_elapsed`, `player_action`.  
-- **Transições:** implementadas via tabela de transições (dicionário/hashmap).  
-- **Processamento de eventos:** fila (queue) garante ordem e debounce de eventos.
-
-### 11.2. Mapeamento FSM ↔ Estrutura de Dados
-| Elemento FSM | Estrutura de Dados | Uso no Jogo |
-|--------------|--------------------|-------------|
-| Estados | Lista / Array | Guarda estados possíveis e iterações |
-| Eventos | Fila (Queue) | Enfileira ações externas e internas |
-| Transições | Dicionário (HashMap) | Mapeia (estado, evento) -> próximo estado |
-| Fluxo narrativo | Lista encadeada | Sequência de textos/legendas por checkpoint |
-| Histórico | Pilha (Stack) | Permite rollback (undo) para debug ou “voltar” |
-| Topologia FSM | Grafo (adjacency list) | Permite caminhos alternativos/expansões |
-
-### 11.3. Exemplo simplificado (pseudocódigo)
-```python
-# estados
-states = ["EcosDoSilencio","RuinasDoOceano","HorizonteDeEsperanca"]
-
-# transicoes: transicoes[current_state][event] = next_state
-transicoes = {
-  "EcosDoSilencio": {"collect_all_shells":"RuinasDoOceano", "time_elapsed":"RuinasDoOceano"},
-  "RuinasDoOceano": {"use_rock_key":"HorizonteDeEsperanca"},
-  "HorizonteDeEsperanca": {}
-}
-
-# fila de eventos
-event_queue = Queue()
-event_queue.enqueue(("collect_item","concha"))
-
-# processamento
-while not event_queue.empty():
-  event = event_queue.dequeue()
-  current = game_state.current
-  if event in transicoes[current]:
-    game_state.current = transicoes[current][event]
-    apply_state_effects(game_state.current)  # altera cor, spawn, música
