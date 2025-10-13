@@ -36,7 +36,7 @@ Este trabalho compõe a proposta de portfólio "Ichigo: Memórias do Oceano", um
 * **Normas e Legislações Aplicáveis**: 
   * ESRB/PEGI: classificação indicativa (previsto como "Livre").
   * LGPD: não se aplica diretamente, pois o jogo não coleta dados pessoais.
-  * WCAG: serão consideradas boas práticas de acessibilidade (ex.: contraste de cores, legendas de textos narrativos).
+  * WCAG: serão consideradas boas práticas de acessibilidade (por exemplo, contraste de cores, legendas de textos narrativos).
 * **Métricas de Sucesso**: 
   * Funcionamento correto da FSM (sem transições inválidas);
   * Clareza na correspondência entre estado ambiental e ambiente apresentado;
@@ -44,18 +44,31 @@ Este trabalho compõe a proposta de portfólio "Ichigo: Memórias do Oceano", um
 
 ## 3. Especificação Técnica
 
-Descrição detalhada da proposta, contemplando requisitos, arquitetura, tecnologias, segurança e aderência aos critérios obrigatórios da linha de projeto escolhida.
-
 ### 3.1. Requisitos de Software
-- **Requisitos Funcionais (RF)**: Liste de forma clara as funcionalidades que o sistema deverá oferecer.
-- **Requisitos Não-Funcionais (RNF)**: Inclua requisitos de desempenho, segurança, usabilidade, escalabilidade, disponibilidade, entre outros.
-- **Representação dos Requisitos**: Inclua um Diagrama de Casos de Uso (UML) ou outra representação visual que facilite o entendimento.
-- **Aderência aos Requisitos da Linha de Projeto**: Indique como cada requisito está alinhado aos itens “Obrigatório Atender” definidos para a linha de projeto (Web, Mobile, Jogos, IA ou IoT).
+- **Requisitos Funcionais (RF)**:
+  - RF01 - Controle de personagem: O jogador poderá mover Ichigo (andar, correr, pular e interagir com objetos);
+  - RF02 - Sistema de coleta:	O jogador poderá coletar conchas e objetos interativos (pá, balde, foto);
+  - RF03 - Sistema de estados ambientais (FSM):	O jogo deverá alterar o ambiente, trilha sonora e obstáculos de acordo com a fase;
+  - RF04 - Sistema de checkpoints: O jogo deverá registrar pontos automáticos de salvamento ao longo do mapa;
+  - RF05 - Interações com o ambiente:	O jogador poderá empurrar objetos, preencher buracos, escalar ou ativar elementos com itens coletados;
+  - RF06 - HUD e interface: O jogo deverá exibir um contador de colecionáveis, item ativo e frases narrativas curtas;
+  - RF07 - Sistema de narrativa dinâmica:	O jogo deverá apresentar textos e eventos conforme a progressão dos estados da FSM;
+  - RF08 - Sistema de som adaptativo: A trilha sonora e os efeitos sonoros deverão reagir às mudanças de estado.
+- **Requisitos Não-Funcionais (RNF)**:
+  - RNF01	- Usabilidade:	Interface minimalista e intuitiva, sem necessidade de tutoriais externos;
+  - RNF02 -	Portabilidade: O jogo deverá ser executável em sistemas Windows e Linux (Godot export templates);
+  - RNF03	- Escalabilidade: O motor FSM e o sistema de itens devem ser modulares para reutilização em novos jogos;
+  - RNF04 -	Segurança:	Não há coleta de dados; o projeto deverá seguir boas práticas de manipulação de arquivos e integridade de save.
+  - RNF05 -	Acessibilidade: Uso de cores contrastantes e fontes legíveis em tela;
+  - RNF06 -	Armazenamento local:	Checkpoints e progresso salvos em arquivo JSON local.
+- **Representação dos Requisitos**: Inclua um Diagrama de Casos de Uso (UML)
+
+- **Aderência aos Requisitos da Linha de Projeto**: O projeto “Ichigo: Memórias do Oceano” foi planejado para atender integralmente aos requisitos obrigatórios da linha de projeto Jogos Digitais, conforme descrito no regulamento. Cada item foi considerado desde a concepção do design até a implementação técnica na engine Godot. O protótipo será totalmente funcional, com três fases contínuas (Ecos do Silêncio, Ruínas do Oceano e Horizonte de Esperança), permitindo ao jogador iniciar, jogar e concluir a jornada sem interrupções. A progressão será controlada por uma Máquina de Estados Finitos (FSM) que regula transições ambientais e eventos narrativos, garantindo um loop completo de gameplay do início ao fim. Também, o jogo será exportado a partir da Godot em formato executável (.exe) e WebGL, permitindo execução local ou online, enquanto a versão WebGL será hospedada no itch.io para testes públicos e demonstração durante o simpósio. Todo o código será mantido neste repositório, cumprindo o requisito de transparência e rastreabilidade do código. Além disso, contará, também, com uma Documentação com foco em Game Design completo, apresentando o personagem controlável (Ichigo) com movimentação, salto e interação, as regras e objetivos claros (coletar conchas e objetos para avançar); a condição de vitória (reencontro final com os pais); o HUD funcional (contador de colecionáveis e item equipado); menus simples e feedback sonoro. Embora o foco principal seja o motor narrativo, o jogo utiliza pixel art original criada no Aseprite e trilhas sonoras dinâmicas baseadas em estados ambientais.
+Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e representam fielmente o estilo artístico e emocional proposto.
 
 ### 3.2. Considerações de Design
 - **Visão Inicial da Arquitetura**: Apresente os principais componentes e suas interações.
 - **Padrões de Arquitetura**: Informe padrões adotados (ex.: [MVC](https://en.wikipedia.org/wiki/Model–view–controller), [Microserviços](https://microservices.io/), [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel), Arquitetura em Camadas).
-- **Modelos C4**: Utilize os quatro níveis ([C4 Model](https://c4model.com/)) quando aplicável.
 - **Mockups das Telas Principais**: Apresente protótipos visuais das telas mais relevantes, mostrando navegação, disposição de elementos e principais interações do usuário. Esses mockups podem ser feitos em ferramentas como Figma, Adobe XD ou similares, e devem refletir a identidade visual e usabilidade prevista para o produto.
 - **Decisões e Alternativas Consideradas**: Justifique escolhas de design, documentando alternativas avaliadas.
 - **Critérios de Escalabilidade, Resiliência e Segurança**: Descreva como a solução será projetada para suportar crescimento, lidar com falhas e manter segurança.
@@ -112,14 +125,12 @@ Descrição detalhada da proposta, contemplando requisitos, arquitetura, tecnolo
  - Descrição dos passos seguintes após a conclusão do documento, com uma visão geral do cronograma para Portfólio I e II.
  - Definição de Marcos: Estabelecer datas para entregas intermediárias e checkpoints.
 
-
 ## 5. Referências
 
 MIRANDA, Lucas Vieira de. <strong>Aplicação de máquina de estados em jogos digitais</strong>. 2014.
 
 ## 6. Apêndices (Opcionais)
 
-Informações complementares, dados de suporte ou discussões detalhadas fora do corpo principal.
 
 ## 7. Avaliações de Professores
 
