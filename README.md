@@ -17,7 +17,7 @@ Este trabalho compõe a proposta de portfólio "Ichigo: Memórias do Oceano", um
   - **Objetivo principal**: Desenvolver um jogo 2D com motor narrativo baseado em FSM e estruturas de dados, aplicado em uma história simbólica de sobrevivência e superação.
   - **Objetivo secundários**:
     - Criar uma FSM capaz de modificar dinamicamente ambientes, obstáculos e trilhas sonoras;
-    - Utilizar estrutura de dados no controle de estados narrativos.
+    - Utilizar estrutura de dados no controle de estados narrativos;
     - Desenvolver três fases contínuas.
 
 ## 2. Descrição do Projeto
@@ -56,14 +56,14 @@ Este trabalho compõe a proposta de portfólio "Ichigo: Memórias do Oceano", um
   - RF08 - Sistema de som adaptativo: A trilha sonora e os efeitos sonoros deverão reagir às mudanças de estado.
 - **Requisitos Não-Funcionais (RNF)**:
   - RNF01	- Usabilidade:	Interface minimalista e intuitiva, sem necessidade de tutoriais externos;
-  - RNF02 -	Portabilidade: O jogo deverá ser executável em sistemas Windows e Linux (Godot export templates);
+  - RNF02 -	Portabilidade: O jogo deverá ser executável em sistemas Windows (Godot export templates);
   - RNF03	- Escalabilidade: O motor FSM e o sistema de itens devem ser modulares para reutilização em novos jogos;
   - RNF04 -	Segurança:	Não há coleta de dados; o projeto deverá seguir boas práticas de manipulação de arquivos e integridade de save.
   - RNF05 -	Acessibilidade: Uso de cores contrastantes e fontes legíveis em tela;
   - RNF06 -	Armazenamento local:	Checkpoints e progresso salvos em arquivo JSON local.
 - **Representação dos Requisitos**: Inclua um Diagrama de Casos de Uso (UML)
 
-- **Aderência aos Requisitos da Linha de Projeto**: O projeto “Ichigo: Memórias do Oceano” foi planejado para atender integralmente aos requisitos obrigatórios da linha de projeto Jogos Digitais, conforme descrito no regulamento. Cada item foi considerado desde a concepção do design até a implementação técnica na engine Godot. O protótipo será totalmente funcional, com três fases contínuas (Ecos do Silêncio, Ruínas do Oceano e Horizonte de Esperança), permitindo ao jogador iniciar, jogar e concluir a jornada sem interrupções. A progressão será controlada por uma Máquina de Estados Finitos (FSM) que regula transições ambientais e eventos narrativos, garantindo um loop completo de gameplay do início ao fim. Também, o jogo será exportado a partir da Godot em formato executável (.exe) e WebGL, permitindo execução local ou online, enquanto a versão WebGL será hospedada no itch.io para testes públicos e demonstração durante o simpósio. Todo o código será mantido neste repositório, cumprindo o requisito de transparência e rastreabilidade do código. Além disso, contará, também, com uma Documentação com foco em Game Design completo, apresentando o personagem controlável (Ichigo) com movimentação, salto e interação, as regras e objetivos claros (coletar conchas e objetos para avançar); a condição de vitória (reencontro final com os pais); o HUD funcional (contador de colecionáveis e item equipado); menus simples e feedback sonoro. Embora o foco principal seja o motor narrativo, o jogo utiliza pixel art original criada no Aseprite e trilhas sonoras dinâmicas baseadas em estados ambientais.
+- **Aderência aos Requisitos da Linha de Projeto**: O projeto “Ichigo: Memórias do Oceano” foi planejado para atender integralmente aos requisitos obrigatórios da linha de projeto Jogos Digitais, conforme descrito no regulamento do desenvolvimento de Portfólio. Cada item foi considerado desde a concepção do design até a implementação técnica na engine Godot. O protótipo será funcional, com três fases contínuas (Ecos do Silêncio, Ruínas do Oceano e Horizonte de Esperança), permitindo ao jogador iniciar, jogar e concluir a jornada sem interrupções. A progressão será controlada por uma Máquina de Estados Finitos (FSM) que regula transições ambientais e eventos narrativos, garantindo um loop completo de gameplay do início ao fim. Também, o jogo será exportado a partir da Godot em formato executável (.exe) e WebGL, permitindo execução local ou online, enquanto a versão WebGL será hospedada no itch.io para testes públicos e demonstração durante o simpósio. Todo o código será mantido neste repositório, cumprindo o requisito de transparência e rastreabilidade do código. Além disso, contará, também, com uma Documentação com foco em Game Design completo, apresentando o personagem controlável (Ichigo) com movimentação, salto e interação, as regras e objetivos claros (coletar conchas e objetos para avançar); a condição de vitória (reencontro final com os pais); o HUD funcional (contador de colecionáveis e item equipado); menus simples e feedback sonoro. Embora o foco principal seja o motor narrativo, o jogo utiliza pixel art original criada no Aseprite e trilhas sonoras dinâmicas baseadas em estados ambientais.
 Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e representam fielmente o estilo artístico e emocional proposto.
 
 ### 3.2. Considerações de Design
@@ -129,4 +129,4 @@ Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e rep
 
 MIRANDA, Lucas Vieira de. <strong>Aplicação de máquina de estados em jogos digitais</strong>. 2014.
 
-## 6. Apêndices (Opcionais)
+## 6. Apêndices
