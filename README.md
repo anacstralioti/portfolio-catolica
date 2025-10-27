@@ -130,11 +130,3 @@ Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e rep
 MIRANDA, Lucas Vieira de. <strong>Aplicação de máquina de estados em jogos digitais</strong>. 2014.
 
 ## 6. Apêndices (Opcionais)
-
-
-## 7. Avaliações de Professores
-
-Adicionar três páginas no final do RFC para que os Professores escolhidos possam fazer suas considerações e assinatura:
-- Considerações Professor/a:
-- Considerações Professor/a:
-- Considerações Professor/a:
