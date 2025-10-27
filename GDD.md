@@ -107,13 +107,13 @@ Este repositório contém o Documento de Design de Jogo (GDD) para *Ichigo: Mem�
 
 ### 3.3. Cenários
 - Três trechos contínuos:
-  - *Ecos do Silêncio* — praia com destroços, calma enganosa.
-  - *Ruínas do Oceano* — destruição concreta, obstáculos reais.
+  - *Ecos do Silêncio* — praia com destroços, calma enganosa;
+  - *Ruínas do Oceano* — destruição concreta, obstáculos reais;
   - *Horizonte de Esperança* — renascimento com vegetação e luz.
 
 ### 3.4. Missões e Quests
-- Missões principais são implícitas: avançar no mapa, coletar objetos necessários.
-- Não há quests secundárias convencionais; objetivos opcionais: colecionar todas as conchas para desbloqueio simbólico final.
+- Missões principais são implícitas: avançar no mapa, coletar objetos necessários;
+- Não há quests secundárias convencionais; objetivos opcionais: colecionar todas as conchas para desbloqueio simbólico final;
 
 ### 3.5. Roteiro e Diálogos
 - Fase 1 — Ecos do Silêncio (Ambiente: praia calma, céu cinza-azulado, som distante do mar)
@@ -166,45 +166,43 @@ Este repositório contém o Documento de Design de Jogo (GDD) para *Ichigo: Mem�
 
 ### 4.2. Mapas e Layouts
 - **Mapa contínuo (visão lateral 2D, 16:9):**
-  - **Start (left)**: Ichigo desperta na areia — *Ecos do Silêncio* (tutorial embutido).
-  - **Middle**: transição gradual para *Ruínas do Oceano* (céu escurecendo → tempestade visual).
-  - **End**: progressão para *Horizonte de Esperança* — subida da duna e casa ao fundo.
+  - **Start (left)**: Ichigo desperta na areia — *Ecos do Silêncio* (tutorial embutido);
+  - **Middle**: transição gradual para *Ruínas do Oceano* (céu escurecendo → tempestade visual);
+  - **End**: progressão para *Horizonte de Esperança* — subida da duna e casa ao fundo;
 - **Blueprints**: para cada trecho haverá 1) background clean e 2) blueprint anotado com legendas (Spawn, Obstacles, Collectibles, Checkpoints, Goal).
 
 ### 4.3. Desafios e Puzzles (detalhado por obstáculo)
 > *Fase 1 — Ecos do Silêncio* (6 obstáculos)
-1. **Tronco (x1)** — pular; concha luminosa acima do tronco; falha = recuo leve.  
-2. **Buraco areia (x1)** — necessita **Pá** (coletável anterior); uso: preencher; falha = não atravessa.  
-3. **Caranguejos (x2)** — desviar/pular; **Balde** pode afastar.  
-4. **Destroços leves (x1)** — empurrar para abrir caminho; concha próxima (contagem).  
+1. **Tronco (x1)** — pular; concha luminosa acima do tronco; falha = recuo leve;
+2. **Buraco areia (x1)** — necessita **Pá** (coletável anterior); uso: preencher; falha = não atravessa;
+3. **Caranguejos (x2)** — desviar/pular; **Balde** pode afastar;
+4. **Destroços leves (x1)** — empurrar para abrir caminho; concha próxima (contagem);
 5. **Poça rasa (x1)** — movimento lento; brinquedo cria boia: aumenta velocidade.
 
 > *Fase 2 — Ruínas do Oceano* (8 obstáculos)
-1. **Poça de lama (x1)** — necessita botas (coletável); atola se não tiver.  
-2. **Árvore caída (x1)** — usar corda para escalar (coletável).  
-3. **Destroços com pregos (x2)** — não tocar; lanterna revela caminho seguro.  
-4. **Barco virado (x1)** — ursinho ativa memória, barco desliza; tempo-limited.  
-5. **Animais assustados (x1)** — usar pano para acalmar.  
+1. **Poça de lama (x1)** — necessita botas (coletável); atola se não tiver;
+2. **Árvore caída (x1)** — usar corda para escalar (coletável);
+3. **Destroços com pregos (x2)** — não tocar; lanterna revela caminho seguro;
+4. **Barco virado (x1)** — ursinho ativa memória, barco desliza; tempo-limited;
+5. **Animais assustados (x1)** — usar pano para acalmar;
 6. **Ventania (x1)** — bandeira guia o vento; andar contra reduz velocidade.
 
 > *Fase 3 — Horizonte de Esperança* (7 obstáculos)
-1. **Pedras (x2)** — pular; cada flor coletada aumenta saturação.  
-2. **Riacho pequeno (x1)** — foto mostra ponto de travessia.  
-3. **Buraco profundo (x1)** — bola cria ponte de luz.  
-4. **Riacho largo (x1)** — livro transforma páginas em pedras flutuantes.  
+1. **Pedras (x2)** — pular; cada flor coletada aumenta saturação;
+2. **Riacho pequeno (x1)** — foto mostra ponto de travessia;
+3. **Buraco profundo (x1)** — bola cria ponte de luz;
+4. **Riacho largo (x1)** — livro transforma páginas em pedras flutuantes; 
 5. **Rocha final (x1)** — só abre com coleção completa de conchas.
 
-Obs.: números (x1/x2) são contagem sugerida por trecho; durante implementação pode ajustar para ritmo.
-
 ### 4.4. Fluxo dos Níveis
-- Checkpoints automáticos em pontos de segurança (total ~5).
-- Transições visuais contínuas (gradiente de cor, partículas, trilha sonora adaptativa) — sem telas de carregamento entre trechos.
+- Checkpoints automáticos em pontos de segurança (total ~5);
+- Transições visuais contínuas (gradiente de cor, partículas, trilha sonora adaptativa) — sem telas de carregamento entre trechos;
 - Progressão linear com possibilidade de retorno para buscar itens opcionais.
 
 ### 4.5. Balanceamento de Dificuldade
-- Fase 1: tutorial gradual, baixa dificuldade.  
-- Fase 2: pico de dificuldade (timings e hazards temporais).  
-- Fase 3: dificuldade moderada, foco em resolução criativa (uso de itens).  
+- Fase 1: tutorial gradual, baixa dificuldade;
+- Fase 2: pico de dificuldade (timings e hazards temporais);
+- Fase 3: dificuldade moderada, foco em resolução criativa (uso de itens);
 - Playtests iterativos para ajustar número de obstáculos e janelas de tempo (meta: média de conclusão por fase 2–3 minutos).
 
 ---
@@ -218,12 +216,11 @@ Obs.: números (x1/x2) são contagem sugerida por trecho; durante implementaçã
 ### 5.2. Personagens e Animações
 - **Ichigo:** paleta suave (tons de azul, areia e rosa-claro, com destaque para o cabelo e roupa).
 - **Sprites principais:**
-  - Idle (4 frames) – respiração e movimento de cabelo.
-  - Walk (6 frames) – caminhada leve, com braços e cabeça acompanhando.
-  - Run (8 frames) – movimento fluido, com vento visível no cabelo.
-  - Jump (3 frames) – impulso, ápice e aterrissagem.
-  - Interact (4 frames) – curvar, empurrar ou pegar itens.
-  - Tamanho base: 48x48 px (expansível para 64x64 px dependendo do cenário).
+  - Walk (6 frames) – caminhada leve, com braços e cabeça acompanhando;
+  - Run (8 frames) – movimento fluido;
+  - Jump (3 frames) – impulso, ápice e aterrissagem;
+  - Interact (4 frames) – curvar, empurrar ou pegar itens;
+  - Tamanho base: 48x48px.
 
 ### 5.3. Cenários e Ambientes
 - Cada fase (estado FSM) terá um conjunto de tilesets e planos de fundo:
@@ -264,11 +261,11 @@ Obs.: números (x1/x2) são contagem sugerida por trecho; durante implementaçã
 
 ### 7.1. Sistema de Progressão
 - O progresso é representado por posição no mapa (x coordinate contínua) + inventário (itens coletados).  
-- Requisitos para eventos (ex.: abrir rocha final) checados via inventário e estado atual da FSM.
+- Requisitos para eventos (por exemplo, abrir rocha final) checados via inventário e estado atual da FSM.
 
 ### 7.2. Sistema de Salvamento
 - Salvamento automático em checkpoints (arquivo local JSON).  
-  - Dados salvos: posição do checkpoint, itens coletados, estado atual das conchas (bitmask), progresso de narrativa.  
+  - Dados salvos: posição do checkpoint, itens coletados, estado atual das conchas, progresso de narrativa.  
 - Opção de reiniciar nível/voltar ao menu.
 
 ---
@@ -276,7 +273,7 @@ Obs.: números (x1/x2) são contagem sugerida por trecho; durante implementaçã
 ## 8. Monetização
 
 ### 8.1. Modelo de Negócio
-- Projeto acadêmico / protótipo — sem monetização prevista.  
+- Projeto acadêmico / protótipo — sem monetização.  
 
 ### 8.2. Itens Pagos
 - Não aplicável.
@@ -286,12 +283,12 @@ Obs.: números (x1/x2) são contagem sugerida por trecho; durante implementaçã
 ## 9. Testes e Qualidade
 
 ### 9.1. Testes de Jogo
-- **Testes Unitários (técnicos):** FSM transitions, validação de eventos (testes em GDScript/pseudotests).  
-- **Testes de Integração:** troca de estados altera cenários, trilha e spawn.  
-- **Playtests (usability):** 12–20 jogadores (testes de compreensão narrativa e dificuldade).  
+- **Testes Unitários (técnicos):** FSM transitions, validação de eventos;  
+- **Testes de Integração:** troca de estados altera cenários, trilha e spawn;  
+- **Playtests:** ~5 jogadores (testes de compreensão narrativa e dificuldade).  
 
 ### 9.2. Feedback dos Jogadores
-- Coleta via formulário (Likert scale + comentários abertos).  
+- Coleta via formulário;
 - Métricas: compreensão narrativa (percentual que reconhece mudança), taxa de conclusão, taxa de repetição de checkpoints.
 
 ---
