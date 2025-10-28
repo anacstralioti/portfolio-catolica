@@ -7,12 +7,12 @@
 
 # Resumo
 
-Este trabalho compõe a proposta de portfólio "Ichigo: Memórias do Oceano", um jogo 2D que narra a jornada simbólica de uma criança sobrevivente a um tsunami. O projeto tem como objetivo central o desenvolvimento de um motor narrativo baseado em Máquinas de Estados Finitos (FSM), implementadas a partir do uso de estruturas de dados. Esse motor permitirá modificar dinamicamente cenários, obstáculos e trilha sonora para conduzir a história, resultando em uma narrativa baseada em estados, o que supera uma progressão linear fixa. Desenvolvido na engine Godot, utilizando GDScript, o jogo é estruturado em três fases distintas: a primeira, “Ecos do Silêncio", representa o momento logo após o desastre, introduzindo o impacto inicial e a coleta de memórias; a segunda, "Ruínas do Oceano", transforma o ambiente em um cenário que apresenta a devastação concreta após a tragédia; e a terceira, "Horizonte de Esperança", mostra a tempestade passando, sendo uma fase de reconstrução e reencontro. O resultado esperado é não apenas um jogo funcional, mas um motor narrativo que facilite o controle de estados ambientais. A narrativa se encerra a criança avistando sua casa e seus pais à distância. 
+Este trabalho compõe a proposta de portfólio “Ichigo: Memórias do Oceano”, um jogo 2D que narra a jornada simbólica de uma criança sobrevivente a um tsunami. O projeto tem como objetivo central, além da criação do jogo, o desenvolvimento de um motor narrativo baseado em Máquinas de Estados Finitos (FSM), implementadas por meio de estruturas de dados. Esse motor permitirá modificar dinamicamente cenários, obstáculos e trilha sonora, conduzindo a história de forma adaptativa e resultando em uma narrativa orientada a estados, em contraste com uma progressão linear fixa. Desenvolvido na engine Godot, utilizando GDScript, o jogo é estruturado em três fases distintas: a primeira, “Ecos do Silêncio”, representa o momento imediatamente posterior ao desastre, introduzindo o impacto inicial e a coleta de memórias; a segunda, “Ruínas do Oceano”, transforma o ambiente em um cenário de devastação concreta; e a terceira, “Horizonte de Esperança”, mostra a tempestade passando, marcando a reconstrução e o reencontro. O resultado esperado é não apenas um jogo funcional, mas um motor narrativo que possibilite o controle de estados ambientais e a criação de experiências interativas mais imersivas. A narrativa se encerra com a criança avistando sua casa e seus pais à distância, simbolizando o retorno à esperança.
 
 ## 1. Introdução
 
 - **Contexto**: O mercado de jogos digitais vem se expandindo e, segundo Gregory (2009, apud Miranda, 2014), jogos digitais podem ser definidos como softwaes que criam mundos virtuais onde o jogador pode controlar um personagem, interagindo com o ambiente e outros personagens (sejam eles controlados por pessoas ou pelo próprio computador). Jogos que exploram histórias emocionais têm atraído atenção crescente, mas ainda são majoritariamente baseados em progressões lineares e estáticas. O uso de máquinas de estados finitos (FSM) e estruturas de dados oferece meios de criar narrativas mais dinâmicas, adaptativas e imersivas; segundo Mellington e Funge (2009, apud Miranda, 2014), uma FSM consiste em um conjunto de estados finitos e regras de transição que determinam mudanças de estado com base em condições específicas, sendo representável por diagramas de grafos, por exemplo. Além disso, Schwab (2009, apud Miranda, 2014) e Buckland (2004, apud Miranda, 2014) destacam que as FSMs são amplamente utilizadas em jogos digitais devido à sua simplicidade, rapidez de execução e flexibilidade, características que favorecem o desenvolvimento de narrativas não lineares.
-- **Justificativa**: O projeto é relevante para a Engenharia de Software por propor um motor narrativo que, além explorar boas práticas de modelagem (FSM), aborda conceitos fundamentais (estruturas de dados, controle de estados), integrando-os em uma aplicação prática de impacto cultural e social.
+- **Justificativa**: O projeto é relevante para a Engenharia de Software por propor um motor narrativo que, além explorar boas práticas de modelagem (FSM), aborda conceitos fundamentais (estruturas de dados, controle de estados), além de tratar o desenvolvimento de jogos, integrando-os em uma aplicação prática de impacto cultural e social.
 - **Objetivos**: 
   - **Objetivo principal**: Desenvolver um jogo 2D com motor narrativo baseado em FSM e estruturas de dados, aplicado em uma história simbólica de sobrevivência e superação.
   - **Objetivo secundários**:
@@ -34,11 +34,11 @@ Este trabalho compõe a proposta de portfólio "Ichigo: Memórias do Oceano", um
   * O jogo contará apenas três fases e foco em narrativa simbólica, não abrangendo progressões extensas;
   * O motor narrativo será validado em um protótipo 2D, não em ambientes 3D.
 * **Normas e Legislações Aplicáveis**: 
-  * ESRB/PEGI: classificação indicativa (previsto como "Livre").
-  * LGPD: não se aplica diretamente, pois o jogo não coleta dados pessoais.
-  * WCAG: serão consideradas boas práticas de acessibilidade (por exemplo, contraste de cores, legendas de textos narrativos).
+  * ESRB/PEGI: classificação indicativa (previsto como "Livre");
+  * LGPD: não se aplica diretamente, pois o jogo não coleta dados pessoais;
+  * WCAG: serão consideradas boas práticas de acessibilidade (como contraste de cores, legendas de textos narrativos).
 * **Métricas de Sucesso**: 
-  * Funcionamento correto da FSM (sem transições inválidas);
+  * Funcionamento correto da FSM;
   * Clareza na correspondência entre estado ambiental e ambiente apresentado;
   * Avaliação de jogabilidade com usuários (entendimento da narrativa).
 
@@ -63,8 +63,8 @@ Este trabalho compõe a proposta de portfólio "Ichigo: Memórias do Oceano", um
   - RNF06 -	Armazenamento local:	Checkpoints e progresso salvos em arquivo JSON local.
 - **Representação dos Requisitos**: Inclua um Diagrama de Casos de Uso (UML)
 
-- **Aderência aos Requisitos da Linha de Projeto**: O projeto “Ichigo: Memórias do Oceano” foi planejado para atender integralmente aos requisitos obrigatórios da linha de projeto Jogos Digitais, conforme descrito no regulamento do desenvolvimento de Portfólio. Cada item foi considerado desde a concepção do design até a implementação técnica na engine Godot. O protótipo será funcional, com três fases contínuas (Ecos do Silêncio, Ruínas do Oceano e Horizonte de Esperança), permitindo ao jogador iniciar, jogar e concluir a jornada sem interrupções. A progressão será controlada por uma Máquina de Estados Finitos (FSM) que regula transições ambientais e eventos narrativos, garantindo um loop completo de gameplay do início ao fim. Também, o jogo será exportado a partir da Godot em formato executável (.exe) e WebGL, permitindo execução local ou online, enquanto a versão WebGL será hospedada no itch.io para testes públicos e demonstração durante o simpósio. Todo o código será mantido neste repositório, cumprindo o requisito de transparência e rastreabilidade do código. Além disso, contará, também, com uma Documentação com foco em Game Design completo, apresentando o personagem controlável (Ichigo) com movimentação, salto e interação, as regras e objetivos claros (coletar conchas e objetos para avançar); a condição de vitória (reencontro final com os pais); o HUD funcional (contador de colecionáveis e item equipado); menus simples e feedback sonoro. Embora o foco principal seja o motor narrativo, o jogo utiliza pixel art original criada no Aseprite e trilhas sonoras dinâmicas baseadas em estados ambientais.
-Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e representam fielmente o estilo artístico e emocional proposto.
+- **Aderência aos Requisitos da Linha de Projeto**: O projeto “Ichigo: Memórias do Oceano” foi planejado para atender integralmente aos requisitos obrigatórios da linha de projeto Jogos Digitais, conforme descrito no regulamento de desenvolvimento de Portfólio. Cada item foi considerado desde a concepção do design até a implementação técnica na engine Godot. O protótipo será funcional, com três fases contínuas (Ecos do Silêncio, Ruínas do Oceano e Horizonte de Esperança), permitindo ao jogador iniciar, jogar e concluir a jornada sem interrupções. A progressão será controlada por uma Máquina de Estados Finitos (FSM) que regula transições ambientais e eventos narrativos, garantindo um loop completo de gameplay do início ao fim. Também, o jogo será exportado a partir da Godot em formato executável (.exe) e WebGL, permitindo execução local ou online, enquanto a versão WebGL será hospedada no itch.io para testes e demonstrações. Todo o código será mantido neste repositório, cumprindo o requisito de transparência e rastreabilidade do código. Além disso, contará, também, com uma Documentação com foco em Game Design completo, apresentando o personagem controlável (Ichigo) com movimentação, salto e interação, as regras e objetivos claros (coletar conchas entre outros objetos para avançar); a condição de vitória (reencontro final com os pais); o HUD funcional (contador de colecionáveis e item equipado); menus simples e feedback sonoro. Embora o foco principal seja o motor narrativo, o jogo utiliza pixel art original criada no Aseprite e trilhas sonoras dinâmicas baseadas em estados ambientais.
+Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e representam o estilo artístico proposto.
 
 ### 3.2. Considerações de Design
 - **Visão Inicial da Arquitetura**: Apresente os principais componentes e suas interações.
@@ -75,24 +75,23 @@ Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e rep
 
 ### 3.3. Stack Tecnológica
 - **Linguagens de Programação**: 
-  - GDScript (Godot Engine): Linguagem de script nativa da Godot, de sintaxe simples e otimizada para desenvolvimento de jogos 2D. A escolha se justifica pela curva de aprendizado acessível e pela integração direta com os recursos da engine.
+  - GDScript (Godot Engine): Linguagem de script nativa da Godot, de sintaxe simples e otimizada para desenvolvimento de jogos 2D. A escolha se justifica pela curva de aprendizado acessível e pela integração direta com os recursos da engine;
   - Python (opcional – prototipagem e testes de FSM): Pode ser utilizado em protótipos de FSM e simulação de estruturas de dados antes da implementação final em GDScript.
 - **Frameworks e Bibliotecas**: 
-  - Godot Engine 4.x: Engine de código aberto voltada para jogos 2D/3D, escolhida pelo suporte nativo a FSM, facilidade de exportação multiplataforma e comunidade ativa.
-  - Biblioteca Godot State Machine (addons): Biblioteca open source que fornece templates para criação de Máquinas de Estados Finitos, acelerando a implementação do motor narrativo.
-  - FMOD ou Godot Audio Server: Para manipulação de áudio dinâmico, permitindo alterar trilhas sonoras conforme os estados narrativos.
+  - Godot Engine: Engine de código aberto voltada para jogos 2D/3D, escolhida pelo suporte nativo a FSM, facilidade de exportação multiplataforma e comunidade ativa;
+  - Biblioteca Godot State Machine: Biblioteca open source que fornece templates para criação de Máquinas de Estados Finitos, acelerando a implementação do motor narrativo;
+  - Godot Audio Server: Para manipulação de áudio dinâmico, permitindo alterar trilhas sonoras conforme os estados narrativos.
 - **Ferramentas de Desenvolvimento e Gestão**: 
-  - IDE: Godot Editor: Ambiente oficial de desenvolvimento do jogo.
-  - Versionamento: Git + GitHub/GitLab: Controle de versão para colaboração, rastreamento de mudanças e integração contínua.
-  - Kanban (GitHub Projects/Trello): Organização do fluxo de tarefas.
-  - Ferramentas gráficas: Krita / Aseprite / GIMP: Criação de sprites, concept art e backgrounds 2D
+  - IDE - Godot Editor: Ambiente oficial de desenvolvimento do jogo;
+  - Versionamento - Git + GitHub: Controle de versão para colaboração, rastreamento de mudanças e integração contínua;
+  - Kanban (Trello): Organização do fluxo de tarefas;
+  - Ferramenta gráfica - Aseprite: Criação de sprites, concept art e backgrounds 2D.
 - **Licenciamento**:  
-  - **Código do Jogo (Ichigo: Memórias do Oceano)**: Licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).  
-  - **Godot Engine**: Licenciada sob a Licença MIT (código aberto).  
-  - **Addons e Bibliotecas de Terceiros**: Seguem suas respectivas licenças (MIT/GPL/Apache), especificadas na pasta `addons/` quando aplicável.  
+  - **Código do Jogo**: Licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT);
+  - **Godot Engine**: Licenciada sob a [Licença MIT](https://opensource.org/licenses/MIT); 
   - **Arte e Assets Originais (sprites, cenários, personagens)**: Licenciados sob **Creative Commons BY-NC-SA 4.0** ([link](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR)).  
   - **Áudio e Efeitos Sonoros**:  
-    - Trilhas originais: Creative Commons BY-NC-SA 4.0.
+    - Trilhas originais: Creative Commons licenciados sob **Creative Commons BY-NC-SA 4.0** ([link](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR)).
 
 ### 3.4. Considerações de Segurança
 - **Riscos Identificados**: 
@@ -101,7 +100,7 @@ Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e rep
   - Distribuição do jogo sem clareza de licenciamento, permitindo uso indevido.
 - **Medidas de Mitigação**: 
   - Utilização apenas de assets originais ou com licenças compatíveis;
-  - Validação de entrada em FSM e eventos (checagem de estados válidos, limites de movimentação e colisões).
+  - Validação de entrada em FSM e eventos (checagem de estados válidos, limites de movimentação e colisões);
   - Inclusão explícita de Licenciamento no repositório e no jogo.
 - **Normas e Boas Práticas Seguidas**: Boas práticas de versionamento (Git) para manter histórico confiável e rastreabilidade de código.
 - **Responsabilidade Ética**: 
@@ -110,15 +109,13 @@ Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e rep
   - Todo o material será disponibilizado para fins acadêmicos e não comerciais, respeitando licenciamento aberto e princípios de uso responsável de tecnologia.
 
 ### 3.5. Conformidade e Normas Aplicáveis
-- Relacione todas as legislações, regulamentações e normas técnicas aplicáveis ao projeto, descrevendo brevemente como serão atendidas.
-- Exemplos:
-  - [LGPD – Lei Geral de Proteção de Dados](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm):
-    - O jogo não coleta nem armazena dados pessoais de usuários;
-  - Direitos Autorais e Licenciamento (Lei nº 9.610/1998 e Creative Commons):
-    - Todos os assets gráficos, sonoros e de código serão de autoria própria ou utilizados sob licenças abertas compatíveis.
-  - Classificação Indicativa (ESRB/PEGI adaptada ao Brasil – Portaria nº 368/2014 do Ministério da Justiça):
-    - O jogo não contém violência explícita, discurso de ódio ou elementos impróprios.
-    - Pela narrativa simbólica, enquadra-se em classificação Livre.
+- [LGPD – Lei Geral de Proteção de Dados](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm):
+  - O jogo não coleta nem armazena dados pessoais de usuários;
+- Direitos Autorais e Licenciamento (Lei nº 9.610/1998 e Creative Commons):
+  - Todos os assets gráficos, sonoros e de código serão de autoria própria ou utilizados sob licenças abertas compatíveis;
+- Classificação Indicativa (ESRB/PEGI adaptada ao Brasil – Portaria nº 368/2014 do Ministério da Justiça):
+  - O jogo não contém violência explícita, discurso de ódio ou elementos impróprios;
+  - Pela narrativa simbólica, enquadra-se em classificação Livre.
    
 ## 4. Próximos Passos
 
