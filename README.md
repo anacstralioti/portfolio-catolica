@@ -67,11 +67,13 @@ Este trabalho compõe a proposta de portfólio “Ichigo: Memórias do Oceano”
 Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e representam o estilo artístico proposto.
 
 ### 3.2. Considerações de Design
-- **Visão Inicial da Arquitetura**: Apresente os principais componentes e suas interações.
-- **Padrões de Arquitetura**: Informe padrões adotados (ex.: [MVC](https://en.wikipedia.org/wiki/Model–view–controller), [Microserviços](https://microservices.io/), [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel), Arquitetura em Camadas).
-- **Mockups das Telas Principais**: Apresente protótipos visuais das telas mais relevantes, mostrando navegação, disposição de elementos e principais interações do usuário. Esses mockups podem ser feitos em ferramentas como Figma, Adobe XD ou similares, e devem refletir a identidade visual e usabilidade prevista para o produto.
-- **Decisões e Alternativas Consideradas**: Justifique escolhas de design, documentando alternativas avaliadas.
-- **Critérios de Escalabilidade, Resiliência e Segurança**: Descreva como a solução será projetada para suportar crescimento, lidar com falhas e manter segurança.
+- **Padrões de Arquitetura**: Utilização de uma Finite State Machine (FSM) para controle ambiental, permitindo que o jogo altere dinamicamente seus estados de acordo com o progresso narrativo;
+- **Mockups das Telas Principais**: Foram elaborados os seguintes protótipos visuais das telas mais relevantes e assets iniciais, representando a navegação, a disposição dos elementos e as principais interações do usuário;
+- **Decisões e Alternativas Consideradas**: Entre as engines avaliadas — Unity (C#) e Godot (GDScript) — optou-se pela Godot devido à leveza, ao código aberto (open source) e à curva de aprendizado mais acessível. Quanto à implementação da FSM, escolheu-se desenvolver uma solução própria com estruturas de dados, em vez de utilizar um plugin, visando maior flexibilidade, aprendizado técnico e possibilidade de reuso. Por fim, decidiu-se pela abordagem 2D em pixel art, em vez de 3D, considerando a viabilidade de produção de assets e o foco no design ambiental.
+- **Critérios de Escalabilidade, Resiliência e Segurança**:
+  - Escalabilidade: cada subsistema (FSM, Itens, UI, Áudio) é independente e testável, permitindo evolução modular;
+  - Resiliência: caso um módulo falhe, o jogo deve continuar sua execução; se uma transição de estado não existir, o sistema deve permanecer no estado atual e registrar um aviso em log;
+  - Segurança: os dados devem ser persistidos localmente, além de o jogo não coletar dados pessoais, apenas telemetria local opcional (como tempo de fase e itens coletados). 
 
 ### 3.3. Stack Tecnológica
 - **Linguagens de Programação**: 
@@ -119,11 +121,30 @@ Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e rep
    
 ## 4. Próximos Passos
 
- - Descrição dos passos seguintes após a conclusão do documento, com uma visão geral do cronograma para Portfólio I e II.
- - Definição de Marcos: Estabelecer datas para entregas intermediárias e checkpoints.
+### 4.1. Etapas Planejadas
+- O projeto “Ichigo: Memórias do Oceano” seguirá para a etapa de execução prática, com marcos definidos para acompanhamento do progresso e conclusão prevista para a primeira quinzena de junho de 2026, onde os marcos para acompanhamento do progresso serão os seguintes:
+  - Criação dos assets visuais e sonoros iniciais, com foco na ambientação da primeira fase (“Ecos do Silêncio”);
+  - Desenvolvimento das telas principais (menu inicial, HUD e sistema de pausa);
+  - Implementação da estrutura base da FSM, incluindo os estados principais e as transições fundamentais;
+  - Testes iniciais de jogabilidade e integração entre FSM, áudio e interface;
+  - Documentação técnica da arquitetura e do funcionamento do motor narrativo;
+  - Ampliação da FSM para comportar novas fases (“Ruínas do Oceano” e “Horizonte de Esperança”);
+  - Implementação completa do sistema de persistência (save, schema e versionamento);
+  - Integração da trilha sonora dinâmica e efeitos ambientais responsivos ao estado do jogo;
+  - Otimização do desempenho e melhoria da experiência do jogador.
+  - Finalização da documentação técnica.
+
+### 4.2. Marcos e Checkpoints
+
+| **Marco**  |                     **Descrição**                             |          **Previsão**             |
+|------------|---------------------------------------------------------------|-----------------------------------|
+|   **M1**   | Documento de design e mockups finalizados                     | Outubro / 2025                    |
+|   **M2**   | Protótipo jogável da Fase 1 (*Ecos do Silêncio*)              | Novembro / 2025                   |
+|   **M3**   | FSM funcional com controle ambiental completo                 | Janeiro / 2026                    |
+|   **M4**   | Fases 2 e 3 integradas e sistema de persistência implementado | Abril / 2026                      |
+|   **M5**   | Versão final e entrega do Portfólio II                        | Primeira quinzena de Junho / 2026 |
+
 
 ## 5. Referências
 
 MIRANDA, Lucas Vieira de. <strong>Aplicação de máquina de estados em jogos digitais</strong>. 2014.
-
-## 6. Apêndices
