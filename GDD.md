@@ -19,9 +19,7 @@ Este repositório contém o Documento de Design de Jogo (GDD) para *Ichigo: Mem�
 6. [Áudio](#6-áudio)  
 7. [Progresso e Salvamento](#7-progresso-e-salvamento)  
 8. [Monetização](#8-monetização)  
-9. [Testes e Qualidade](#9-testes-e-qualidade)  
-10. [Conclusão e Próximos Passos](#10-conclusão-e-próximos-passos)  
-11. [Apêndices técnicos: FSM e Estruturas de Dados](#11-apêndices-técnicos-fsm-e-estruturas-de-dados)
+9. [Testes e Qualidade](#9-testes-e-qualidade) 
 
 ---
 
@@ -247,13 +245,13 @@ Este repositório contém o Documento de Design de Jogo (GDD) para *Ichigo: Mem�
 ### 6.1. Trilha Sonora
 - Trilha adaptativa com camada: 
   - Layer calmo, layer tensão, layer esperança — conforme FSM.
-  - 
+    
 ### 6.2. Efeitos Sonoros
 - Por ação: passo na areia, splash, pulo, coletar item, usar item, ambiente (vento, chuva);
 - Sons de feedback (por exemplo, ping ao coletar).
 
 ### 6.3. Dublagem
-- Não há dublagem; fala é expressa em texto curto.
+- Não há dublagem; a fala é expressa em texto curto.
 
 ---
 
@@ -273,7 +271,7 @@ Este repositório contém o Documento de Design de Jogo (GDD) para *Ichigo: Mem�
 ## 8. Monetização
 
 ### 8.1. Modelo de Negócio
-- Projeto acadêmico / protótipo — sem monetização.  
+- Sem monetização.  
 
 ### 8.2. Itens Pagos
 - Não aplicável.
