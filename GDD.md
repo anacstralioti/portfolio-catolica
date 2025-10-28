@@ -5,7 +5,7 @@
 ---
 
 ## Objetivo do Repositório
-Este repositório contém o Documento de Design de Jogo (GDD) para *Ichigo: Memórias do Oceano*, cobrindo mecânicas, narrativa, níveis, arte, áudio, tecnologia e plano de testes. O GDD é destinado a guiar o desenvolvimento do protótipo e a documentação do TCC/portfólio.
+Este repositório contém o Documento de Design de Jogo (GDD) para *Ichigo: Memórias do Oceano*, cobrindo mecânicas, narrativa, níveis, arte, áudio, tecnologia e plano de testes. O GDD é destinado a guiar o desenvolvimento do protótipo e a documentação do portfólio.
 
 ---
 
