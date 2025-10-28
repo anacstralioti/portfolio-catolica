@@ -111,11 +111,11 @@ Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e rep
   - Todo o material será disponibilizado para fins acadêmicos e não comerciais, respeitando licenciamento aberto e princípios de uso responsável de tecnologia.
 
 ### 3.5. Conformidade e Normas Aplicáveis
-- [LGPD – Lei Geral de Proteção de Dados](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm):
+- LGPD – Lei Geral de Proteção de Dados (Brasil, 2018):
   - O jogo não coleta nem armazena dados pessoais de usuários;
-- Direitos Autorais e Licenciamento (Lei nº 9.610/1998 e Creative Commons):
+- Direitos Autorais e Licenciamento de acordo com a Lei nº 9.610/1998 (Brasil, 1998):
   - Todos os assets gráficos, sonoros e de código serão de autoria própria ou utilizados sob licenças abertas compatíveis;
-- Classificação Indicativa (ESRB/PEGI adaptada ao Brasil – Portaria nº 368/2014 do Ministério da Justiça):
+- Classificação Indicativa de acordo com ESRB/PEGI adaptada ao Brasil – Portaria nº 368/2014 do Ministério da Justiça (Brasil, 2014):
   - O jogo não contém violência explícita, discurso de ódio ou elementos impróprios;
   - Pela narrativa simbólica, enquadra-se em classificação Livre.
    
@@ -147,4 +147,11 @@ Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e rep
 
 ## 5. Referências
 
+BRASIL. <strong>Lei n. 13.709, de 14 de agosto de 2018</strong>. Dispõe sobre a proteção de dados pessoais e altera a Lei n. 12.965, de 23 de abril de 2014 (Marco Civil da Internet). Diário Oficial da União : seção 1, Brasília, DF, ano 155, n. 157, p. 59-64, 15 ago. 2018. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm. Acesso em: 20 set. 2025.
+
+BRASIL. <strong>Lei n. 9.610, de 19 de fevereiro de 1998</strong>. Altera, atualiza e consolida a legislação sobre direitos autorais e dá outras providências. Diário Oficial da União: seção 1, Brasília, DF, ano 137, n. 40, p. 5-10, 20 fev. 1998. Disponível em: [https://www.planalto.gov.br/ccivil_03/leis/l9610.htm](https://www.planalto.gov.br/ccivil_03/leis/l9610.htm). Acesso em: 20 set. 2025.
+
+BRASIL. Ministério da Justiça. Portaria n.º 368, de 11 de fevereiro de 2014. Diário Oficial da União: seção 1, Brasília, DF, ano 151, n.º 31, p. 4-5, 12 fev. 2014. Disponível em: [https://anttlegis.antt.gov.br/action/ActionDatalegis.php?acao=detalharAto&tipo=POR&numeroAto=00000368&seqAto=000&valorAno=2014&orgao=MJ&nomeTitulo=codigos&desItem=&desItemFim=&cod_modulo=420&cod_menu=7145](https://anttlegis.antt.gov.br/action/ActionDatalegis.php?acao=detalharAto&tipo=POR&numeroAto=00000368&seqAto=000&valorAno=2014&orgao=MJ&nomeTitulo=codigos&desItem=&desItemFim=&cod_modulo=420&cod_menu=7145). Acesso em: 20 set. 2025.
+
 MIRANDA, Lucas Vieira de. <strong>Aplicação de máquina de estados em jogos digitais</strong>. 2014.
+
