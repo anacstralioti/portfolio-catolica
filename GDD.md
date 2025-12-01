@@ -18,8 +18,7 @@ Este repositório contém o Documento de Design de Jogo (GDD) para *Ichigo: Mem�
 5. [Arte e Estilo Visual](#5-arte-e-estilo-visual)  
 6. [Áudio](#6-áudio)  
 7. [Progresso e Salvamento](#7-progresso-e-salvamento)  
-8. [Monetização](#8-monetização)  
-9. [Testes e Qualidade](#9-testes-e-qualidade) 
+8. [Testes e Qualidade](#8-testes-e-qualidade) 
 
 ---
 
@@ -268,24 +267,14 @@ Este repositório contém o Documento de Design de Jogo (GDD) para *Ichigo: Mem�
 
 ---
 
-## 8. Monetização
+## 8. Testes e Qualidade
 
-### 8.1. Modelo de Negócio
-- Sem monetização.  
-
-### 8.2. Itens Pagos
-- Não aplicável.
-
----
-
-## 9. Testes e Qualidade
-
-### 9.1. Testes de Jogo
+### 8.1. Testes de Jogo
 - **Testes Unitários (técnicos):** FSM transitions, validação de eventos;  
 - **Testes de Integração:** troca de estados altera cenários, trilha e spawn;  
-- **Playtests:** ~5 jogadores (testes de compreensão narrativa e dificuldade).  
+- **Playtests:** ~3 jogadores (testes de compreensão narrativa e dificuldade).  
 
-### 9.2. Feedback dos Jogadores
+### 8.2. Feedback dos Jogadores
 - Coleta via formulário;
 - Métricas: compreensão narrativa (percentual que reconhece mudança), taxa de conclusão, taxa de repetição de checkpoints.
 
