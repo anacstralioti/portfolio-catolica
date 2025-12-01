@@ -3,7 +3,7 @@
 - **Título do Projeto**: Desenvolvimento do jogo 2D “Ichigo: Memórias do Oceano” com motor narrativo baseado em Máquinas de Estados Finitos e Estrutura de Dados.
 - **Nome do Estudante**:  Ana Carolina Fanhani Stralioti.
 - **Curso**: Engenharia de Software.
-- **Data de Entrega**: [Data].
+- **Data de Entrega**: 02/12/2025 (Parte 1).
 
 # Resumo
 
@@ -63,12 +63,11 @@ Este trabalho compõe a proposta de portfólio “Ichigo: Memórias do Oceano”
   - RNF06 -	Armazenamento local:	Checkpoints e progresso salvos em arquivo JSON local.
 - **Representação dos Requisitos**: Inclua um Diagrama de Casos de Uso (UML)
 
-- **Aderência aos Requisitos da Linha de Projeto**: O projeto “Ichigo: Memórias do Oceano” foi planejado para atender integralmente aos requisitos obrigatórios da linha de projeto Jogos Digitais, conforme descrito no regulamento de desenvolvimento de Portfólio. Cada item foi considerado desde a concepção do design até a implementação técnica na engine Godot. O protótipo será funcional, com três fases contínuas (Ecos do Silêncio, Ruínas do Oceano e Horizonte de Esperança), permitindo ao jogador iniciar, jogar e concluir a jornada sem interrupções. A progressão será controlada por uma Máquina de Estados Finitos (FSM) que regula transições ambientais e eventos narrativos, garantindo um loop completo de gameplay do início ao fim. Também, o jogo será exportado a partir da Godot em formato executável (.exe) e WebGL, permitindo execução local ou online, enquanto a versão WebGL será hospedada no itch.io para testes e demonstrações. Todo o código será mantido neste repositório, cumprindo o requisito de transparência e rastreabilidade do código. Além disso, contará, também, com uma Documentação com foco em Game Design completo, apresentando o personagem controlável (Ichigo) com movimentação, salto e interação, as regras e objetivos claros (coletar conchas entre outros objetos para avançar); a condição de vitória (reencontro final com os pais); o HUD funcional (contador de colecionáveis e item equipado); menus simples e feedback sonoro. Embora o foco principal seja o motor narrativo, o jogo utiliza pixel art original criada no Aseprite e trilhas sonoras dinâmicas baseadas em estados ambientais.
+- **Aderência aos Requisitos da Linha de Projeto**: O projeto “Ichigo: Memórias do Oceano” foi planejado para atender integralmente aos requisitos obrigatórios da linha de projeto Jogos Digitais, conforme descrito no regulamento de desenvolvimento de Portfólio. Cada item foi considerado desde a concepção do design até a implementação técnica na engine Godot. O protótipo será funcional, com três fases contínuas (Ecos do Silêncio, Ruínas do Oceano e Horizonte de Esperança), permitindo ao jogador iniciar, jogar e concluir a jornada sem interrupções. A progressão será controlada por uma Máquina de Estados Finitos (FSM) que regula transições ambientais e eventos narrativos, garantindo um loop completo de gameplay do início ao fim. Também, o jogo será exportado a partir da Godot em formato executável (.exe) e WebGL, permitindo execução local ou online, enquanto a versão WebGL será hospedada no itch.io para testes e demonstrações. Todo o código será mantido neste repositório, cumprindo o requisito de transparência e rastreabilidade do código. Além disso, contará, também, com uma Documentação com foco em Game Design, apresentando o personagem controlável (Ichigo) com movimentação, salto e interação, as regras e objetivos claros (coletar conchas entre outros objetos para avançar); a condição de vitória (reencontro final com os pais); o HUD funcional (contador de colecionáveis e item equipado); menus simples e feedback sonoro. Embora o foco principal seja o motor narrativo, o jogo utiliza pixel art original criada no Aseprite e trilhas sonoras dinâmicas baseadas em estados ambientais.
 Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e representam o estilo artístico proposto.
 
 ### 3.2. Considerações de Design
 - **Padrões de Arquitetura**: Utilização de uma Finite State Machine (FSM) para controle ambiental, permitindo que o jogo altere dinamicamente seus estados de acordo com o progresso narrativo;
-- **Mockups das Telas Principais**: Foram elaborados os seguintes protótipos visuais das telas mais relevantes e assets iniciais, representando a navegação, a disposição dos elementos e as principais interações do usuário;
 - **Decisões e Alternativas Consideradas**: Entre as engines avaliadas — Unity (C#) e Godot (GDScript) — optou-se pela Godot devido à leveza, ao código aberto (open source) e à curva de aprendizado mais acessível. Quanto à implementação da FSM, escolheu-se desenvolver uma solução própria com estruturas de dados, em vez de utilizar um plugin, visando maior flexibilidade, aprendizado técnico e possibilidade de reuso. Por fim, decidiu-se pela abordagem 2D em pixel art, em vez de 3D, considerando a viabilidade de produção de assets e o foco no design ambiental.
 - **Critérios de Escalabilidade, Resiliência e Segurança**:
   - Escalabilidade: cada subsistema (FSM, Itens, UI, Áudio) é independente e testável, permitindo evolução modular;
@@ -78,16 +77,16 @@ Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e rep
 ### 3.3. Stack Tecnológica
 - **Linguagens de Programação**: 
   - GDScript (Godot Engine): Linguagem de script nativa da Godot, de sintaxe simples e otimizada para desenvolvimento de jogos 2D. A escolha se justifica pela curva de aprendizado acessível e pela integração direta com os recursos da engine;
-  - Python (opcional – prototipagem e testes de FSM): Pode ser utilizado em protótipos de FSM e simulação de estruturas de dados antes da implementação final em GDScript.
+  - Python (testes de FSM): Pode ser utilizado em protótipos de FSM e simulação de estruturas de dados antes da implementação final em GDScript.
 - **Frameworks e Bibliotecas**: 
   - Godot Engine: Engine de código aberto voltada para jogos 2D/3D, escolhida pelo suporte nativo a FSM, facilidade de exportação multiplataforma e comunidade ativa;
   - Biblioteca Godot State Machine: Biblioteca open source que fornece templates para criação de Máquinas de Estados Finitos, acelerando a implementação do motor narrativo;
   - Godot Audio Server: Para manipulação de áudio dinâmico, permitindo alterar trilhas sonoras conforme os estados narrativos.
 - **Ferramentas de Desenvolvimento e Gestão**: 
-  - IDE - Godot Editor: Ambiente oficial de desenvolvimento do jogo;
-  - Versionamento - Git + GitHub: Controle de versão para colaboração, rastreamento de mudanças e integração contínua;
-  - Kanban (Trello): Organização do fluxo de tarefas;
-  - Ferramenta gráfica - Aseprite: Criação de sprites, concept art e backgrounds 2D.
+  - IDE Godot Editor: Ambiente oficial de desenvolvimento do jogo;
+  - Versionamento com Git + GitHub: Controle de versão para colaboração, rastreamento de mudanças e integração contínua;
+  - Kanban com Trello: Organização do fluxo de tarefas;
+  - Ferramenta gráfica Aseprite: Criação de sprites, concept art e backgrounds 2D.
 - **Licenciamento**:  
   - **Código do Jogo**: Licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT);
   - **Godot Engine**: Licenciada sob a [Licença MIT](https://opensource.org/licenses/MIT); 
@@ -104,7 +103,7 @@ Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e rep
   - Utilização apenas de assets originais ou com licenças compatíveis;
   - Validação de entrada em FSM e eventos (checagem de estados válidos, limites de movimentação e colisões);
   - Inclusão explícita de Licenciamento no repositório e no jogo.
-- **Normas e Boas Práticas Seguidas**: Boas práticas de versionamento (Git) para manter histórico confiável e rastreabilidade de código.
+- **Normas e Boas Práticas Seguidas**: Boas práticas de versionamento para manter histórico confiável e rastreabilidade de código.
 - **Responsabilidade Ética**: 
   - O jogo não coleta nem processa dados sensíveis;
   - A temática (tragédia natural) será tratada com cuidado narrativo, buscando inspiração simbólica sem exploração sensacionalista.
@@ -138,10 +137,10 @@ Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e rep
 
 | **Marco**  |                     **Descrição**                             |          **Previsão**             |
 |------------|---------------------------------------------------------------|-----------------------------------|
-|   **M1**   | Documento de design e mockups finalizados                     | Outubro / 2025                    |
-|   **M2**   | Protótipo jogável da Fase 1 (*Ecos do Silêncio*)              | Novembro / 2025                   |
-|   **M3**   | FSM funcional com controle ambiental completo                 | Janeiro / 2026                    |
-|   **M4**   | Fases 2 e 3 integradas e sistema de persistência implementado | Abril / 2026                      |
+|   **M1**   | Documento de design                                           | Outubro / 2025                    |
+|   **M2**   | Protótipos e sprites completos das Fases                      | Janeiro / 2026                   |
+|   **M3**   | Início da FSM com controle ambiental completo                 | Janeiro / 2026                    |
+|   **M4**   | Integrar fases e sistema de persistência                      | Março / 2026                      |
 |   **M5**   | Versão final e entrega do Portfólio II                        | Primeira quinzena de Junho / 2026 |
 
 
