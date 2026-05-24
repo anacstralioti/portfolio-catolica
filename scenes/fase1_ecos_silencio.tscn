@@ -1,0 +1,764 @@
+[gd_scene load_steps=36 format=3 uid="uid://tqqu4aavr42n"]
+
+[ext_resource type="Script" uid="uid://qkfxm4lvh8a2" path="res://scripts/game_manager.gd" id="1_gm"]
+[ext_resource type="Script" uid="uid://t3m10ftmmd08" path="res://scripts/player.gd" id="2_pl"]
+[ext_resource type="Texture2D" uid="uid://ddwp0hbp6gb8a" path="res://background/background.png" id="3_36jhy"]
+[ext_resource type="Script" uid="uid://ecq3ge5pmp01" path="res://scripts/parallax_bg.gd" id="3_pb"]
+[ext_resource type="Script" uid="uid://1qkp0w15xrvf" path="res://scripts/hud.gd" id="4_hu"]
+[ext_resource type="Script" uid="uid://b8gg7qof3tcmt" path="res://scripts/narrative_ui.gd" id="5_na"]
+[ext_resource type="Script" uid="uid://ukp1x0ye7u7w" path="res://scripts/checkpoint.gd" id="6_cp"]
+[ext_resource type="Script" uid="uid://1dnkvww7yydm" path="res://scripts/collectible.gd" id="7_co"]
+[ext_resource type="Script" uid="uid://dcxgp6rxyrweq" path="res://scripts/sand_hole.gd" id="8_sh"]
+[ext_resource type="Script" uid="uid://c0mraxodi6qv1" path="res://scripts/crab.gd" id="9_cr"]
+[ext_resource type="Script" uid="uid://b4nb442gamxvd" path="res://scripts/puddle.gd" id="10_pu"]
+[ext_resource type="Texture2D" uid="uid://b8fieu7ekjpxl" path="res://sprites/ichigo/ichigo_idle.svg" id="12_idle"]
+[ext_resource type="Texture2D" uid="uid://ca4nbacqly5ee" path="res://sprites/ichigo/ichigo_run1.svg" id="13_run1"]
+[ext_resource type="Texture2D" uid="uid://bvf7qm6t4yh6n" path="res://sprites/ichigo/ichigo_run2.svg" id="14_run2"]
+[ext_resource type="Texture2D" uid="uid://bdsvdi4x4pui5" path="res://sprites/ichigo/ichigo_jump.svg" id="15_jump"]
+[ext_resource type="Texture2D" uid="uid://bukccehb2yhw0" path="res://sprites/ichigo/ichigo_crouch.svg" id="16_crouch"]
+[ext_resource type="Texture2D" uid="uid://ce031vxu0cqcx" path="res://sprites/items/shell_a.svg" id="19_shell"]
+[ext_resource type="Texture2D" uid="uid://b37hf4l12gjaj" path="res://sprites/obstacles/crab.svg" id="20_crab"]
+[ext_resource type="Texture2D" uid="uid://cixpjfaqfy2pw" path="res://sprites/obstacles/sand_hole.svg" id="21_hole"]
+[ext_resource type="Texture2D" uid="uid://d0h2grehic8vo" path="res://sprites/items/shovel.svg" id="22_shovel"]
+[ext_resource type="Texture2D" uid="uid://c0ageblcycoaa" path="res://sprites/effects/checkpoint.svg" id="23_cp"]
+[ext_resource type="Texture2D" uid="uid://13ersk2yd7c" path="res://sprites/obstacles/puddle.svg" id="25_pu"]
+[ext_resource type="Texture2D" uid="uid://bcncmkgtvu4ik" path="res://sprites/items/bucket.svg" id="26_bk"]
+
+[sub_resource type="RectangleShape2D" id="rs_ground"]
+size = Vector2(6400, 20)
+
+[sub_resource type="SpriteFrames" id="sf_cp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_cp")
+}],
+"loop": true,
+"name": &"active",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_cp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="cs_cp"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="rs_hole"]
+size = Vector2(36, 18)
+
+[sub_resource type="SpriteFrames" id="sf_crab"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_crab")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_crab")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="rs_crab"]
+size = Vector2(28, 16)
+
+[sub_resource type="RectangleShape2D" id="rs_puddle"]
+size = Vector2(60, 14)
+
+[sub_resource type="CircleShape2D" id="cs_item"]
+radius = 18.0
+
+[sub_resource type="SpriteFrames" id="sf_ichigo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_crouch")
+}],
+"loop": false,
+"name": &"crouch",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_idle")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_jump")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_run1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_run2")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_run1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_run2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="cs_player"]
+radius = 8.0
+height = 28.0
+
+[sub_resource type="RectangleShape2D" id="rs_interact"]
+size = Vector2(40, 20)
+
+[sub_resource type="CircleShape2D" id="cs_collect"]
+radius = 22.0
+
+[node name="Fase1_EcosSilencio" type="Node2D"]
+script = ExtResource("1_gm")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("3_pb")
+
+[node name="BgLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Bg" type="Sprite2D" parent="ParallaxBackground/BgLayer"]
+texture_filter = 1
+position = Vector2(181.99998, 90)
+scale = Vector2(0.2514913, 0.50052536)
+texture = ExtResource("3_36jhy")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="World"]
+position = Vector2(3200, 218)
+
+[node name="GroundShape" type="CollisionShape2D" parent="World/Ground"]
+shape = SubResource("rs_ground")
+
+[node name="SandTiles" type="TileMapLayer" parent="World/Ground"]
+position = Vector2(-3200, -10)
+
+[node name="DebrisLayer" type="Node2D" parent="World"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Checkpoint1" type="Area2D" parent="World"]
+position = Vector2(700, 205)
+script = ExtResource("6_cp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/Checkpoint1"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("sf_cp")
+animation = &"idle"
+
+[node name="CP1Shape" type="CollisionShape2D" parent="World/Checkpoint1"]
+shape = SubResource("cs_cp")
+
+[node name="Particles" type="CPUParticles2D" parent="World/Checkpoint1"]
+emitting = false
+amount = 12
+lifetime = 0.6
+direction = Vector2(0, -1)
+spread = 60.0
+color = Color(0.5, 1, 0.6, 0.9)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/Checkpoint1"]
+
+[node name="Checkpoint2" type="Area2D" parent="World"]
+position = Vector2(2200, 205)
+script = ExtResource("6_cp")
+checkpoint_id = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/Checkpoint2"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("sf_cp")
+animation = &"idle"
+
+[node name="CP2Shape" type="CollisionShape2D" parent="World/Checkpoint2"]
+shape = SubResource("cs_cp")
+
+[node name="Particles" type="CPUParticles2D" parent="World/Checkpoint2"]
+emitting = false
+amount = 12
+lifetime = 0.6
+direction = Vector2(0, -1)
+spread = 60.0
+color = Color(0.5, 1, 0.6, 0.9)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/Checkpoint2"]
+
+[node name="Checkpoint3" type="Area2D" parent="World"]
+position = Vector2(4500, 205)
+script = ExtResource("6_cp")
+checkpoint_id = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/Checkpoint3"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("sf_cp")
+animation = &"idle"
+
+[node name="CP3Shape" type="CollisionShape2D" parent="World/Checkpoint3"]
+shape = SubResource("cs_cp")
+
+[node name="Particles" type="CPUParticles2D" parent="World/Checkpoint3"]
+emitting = false
+amount = 12
+lifetime = 0.6
+color = Color(0.5, 1, 0.6, 0.9)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/Checkpoint3"]
+
+[node name="SandHole1" type="StaticBody2D" parent="World"]
+position = Vector2(480, 208)
+script = ExtResource("8_sh")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/SandHole1"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("21_hole")
+
+[node name="Collision" type="CollisionShape2D" parent="World/SandHole1"]
+shape = SubResource("rs_hole")
+
+[node name="Prompt" type="Label" parent="World/SandHole1"]
+visible = false
+offset_left = -30.0
+offset_top = -28.0
+offset_right = -30.0
+offset_bottom = -28.0
+text = "[E] Usar pá"
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/SandHole1"]
+
+[node name="DetectArea" type="Area2D" parent="World/SandHole1"]
+
+[node name="DetectShape" type="CollisionShape2D" parent="World/SandHole1/DetectArea"]
+shape = SubResource("rs_hole")
+
+[node name="SandHole2" type="StaticBody2D" parent="World"]
+position = Vector2(1200, 208)
+script = ExtResource("8_sh")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/SandHole2"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("21_hole")
+
+[node name="Collision" type="CollisionShape2D" parent="World/SandHole2"]
+shape = SubResource("rs_hole")
+
+[node name="Prompt" type="Label" parent="World/SandHole2"]
+visible = false
+offset_left = -30.0
+offset_top = -28.0
+offset_right = -30.0
+offset_bottom = -28.0
+text = "[E] Usar pá"
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/SandHole2"]
+
+[node name="DetectArea" type="Area2D" parent="World/SandHole2"]
+
+[node name="DetectShape" type="CollisionShape2D" parent="World/SandHole2/DetectArea"]
+shape = SubResource("rs_hole")
+
+[node name="SandHole3" type="StaticBody2D" parent="World"]
+position = Vector2(3100, 208)
+script = ExtResource("8_sh")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/SandHole3"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("21_hole")
+
+[node name="Collision" type="CollisionShape2D" parent="World/SandHole3"]
+shape = SubResource("rs_hole")
+
+[node name="Prompt" type="Label" parent="World/SandHole3"]
+visible = false
+offset_left = -30.0
+offset_top = -28.0
+offset_right = -30.0
+offset_bottom = -28.0
+text = "[E] Usar pá"
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/SandHole3"]
+
+[node name="DetectArea" type="Area2D" parent="World/SandHole3"]
+
+[node name="DetectShape" type="CollisionShape2D" parent="World/SandHole3/DetectArea"]
+shape = SubResource("rs_hole")
+
+[node name="Crab1" type="CharacterBody2D" parent="World"]
+position = Vector2(620, 200)
+script = ExtResource("9_cr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/Crab1"]
+position = Vector2(0, -5)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("sf_crab")
+animation = &"walk"
+
+[node name="CrabShape" type="CollisionShape2D" parent="World/Crab1"]
+shape = SubResource("rs_crab")
+
+[node name="Crab2" type="CharacterBody2D" parent="World"]
+position = Vector2(1350, 200)
+script = ExtResource("9_cr")
+patrol_dist = 70.0
+speed = 55.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/Crab2"]
+position = Vector2(0, -5)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("sf_crab")
+animation = &"walk"
+
+[node name="CrabShape" type="CollisionShape2D" parent="World/Crab2"]
+shape = SubResource("rs_crab")
+
+[node name="Crab3" type="CharacterBody2D" parent="World"]
+position = Vector2(1800, 200)
+script = ExtResource("9_cr")
+patrol_dist = 60.0
+speed = 50.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/Crab3"]
+position = Vector2(0, -5)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("sf_crab")
+animation = &"walk"
+
+[node name="CrabShape" type="CollisionShape2D" parent="World/Crab3"]
+shape = SubResource("rs_crab")
+
+[node name="Crab4" type="CharacterBody2D" parent="World"]
+position = Vector2(3300, 200)
+script = ExtResource("9_cr")
+patrol_dist = 90.0
+speed = 60.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/Crab4"]
+position = Vector2(0, -5)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("sf_crab")
+animation = &"walk"
+
+[node name="CrabShape" type="CollisionShape2D" parent="World/Crab4"]
+shape = SubResource("rs_crab")
+
+[node name="Crab5" type="CharacterBody2D" parent="World"]
+position = Vector2(5000, 200)
+script = ExtResource("9_cr")
+patrol_dist = 60.0
+speed = 68.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/Crab5"]
+position = Vector2(0, -5)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("sf_crab")
+animation = &"walk"
+
+[node name="CrabShape" type="CollisionShape2D" parent="World/Crab5"]
+shape = SubResource("rs_crab")
+
+[node name="Puddle1" type="Area2D" parent="World"]
+position = Vector2(900, 208)
+script = ExtResource("10_pu")
+
+[node name="PuddleSprite1" type="Sprite2D" parent="World/Puddle1"]
+modulate = Color(0.55, 0.78, 0.95, 0.85)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("25_pu")
+
+[node name="PuddleShape1" type="CollisionShape2D" parent="World/Puddle1"]
+shape = SubResource("rs_puddle")
+
+[node name="Puddle2" type="Area2D" parent="World"]
+position = Vector2(1550, 208)
+script = ExtResource("10_pu")
+
+[node name="PuddleSprite2" type="Sprite2D" parent="World/Puddle2"]
+modulate = Color(0.55, 0.78, 0.95, 0.85)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("25_pu")
+
+[node name="PuddleShape2" type="CollisionShape2D" parent="World/Puddle2"]
+shape = SubResource("rs_puddle")
+
+[node name="Puddle3" type="Area2D" parent="World"]
+position = Vector2(2080, 208)
+script = ExtResource("10_pu")
+
+[node name="PuddleSprite3" type="Sprite2D" parent="World/Puddle3"]
+modulate = Color(0.55, 0.78, 0.95, 0.85)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("25_pu")
+
+[node name="PuddleShape3" type="CollisionShape2D" parent="World/Puddle3"]
+shape = SubResource("rs_puddle")
+
+[node name="Puddle4" type="Area2D" parent="World"]
+position = Vector2(3900, 208)
+script = ExtResource("10_pu")
+
+[node name="PuddleSprite4" type="Sprite2D" parent="World/Puddle4"]
+modulate = Color(0.55, 0.78, 0.95, 0.85)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("25_pu")
+
+[node name="PuddleShape4" type="CollisionShape2D" parent="World/Puddle4"]
+shape = SubResource("rs_puddle")
+
+[node name="Shell1" type="Area2D" parent="World"]
+position = Vector2(180, 192)
+script = ExtResource("7_co")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Shell1"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_shell")
+
+[node name="Glow" type="Sprite2D" parent="World/Shell1"]
+modulate = Color(1, 0.95, 0.5, 0.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_shell")
+
+[node name="Particles" type="CPUParticles2D" parent="World/Shell1"]
+emitting = false
+amount = 10
+lifetime = 0.5
+color = Color(1, 0.9, 0.4, 0.9)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/Shell1"]
+
+[node name="ShellShape1" type="CollisionShape2D" parent="World/Shell1"]
+shape = SubResource("cs_item")
+
+[node name="Shell2" type="Area2D" parent="World"]
+position = Vector2(560, 192)
+script = ExtResource("7_co")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Shell2"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_shell")
+
+[node name="Glow" type="Sprite2D" parent="World/Shell2"]
+modulate = Color(1, 0.95, 0.5, 0.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_shell")
+
+[node name="Particles" type="CPUParticles2D" parent="World/Shell2"]
+emitting = false
+amount = 10
+lifetime = 0.5
+color = Color(1, 0.9, 0.4, 0.9)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/Shell2"]
+
+[node name="ShellShape2" type="CollisionShape2D" parent="World/Shell2"]
+shape = SubResource("cs_item")
+
+[node name="Shell3" type="Area2D" parent="World"]
+position = Vector2(980, 172)
+script = ExtResource("7_co")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Shell3"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_shell")
+
+[node name="Glow" type="Sprite2D" parent="World/Shell3"]
+modulate = Color(1, 0.95, 0.5, 0.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_shell")
+
+[node name="Particles" type="CPUParticles2D" parent="World/Shell3"]
+emitting = false
+amount = 10
+lifetime = 0.5
+color = Color(1, 0.9, 0.4, 0.9)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/Shell3"]
+
+[node name="ShellShape3" type="CollisionShape2D" parent="World/Shell3"]
+shape = SubResource("cs_item")
+
+[node name="Shell4" type="Area2D" parent="World"]
+position = Vector2(1650, 158)
+script = ExtResource("7_co")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Shell4"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_shell")
+
+[node name="Glow" type="Sprite2D" parent="World/Shell4"]
+modulate = Color(1, 0.95, 0.5, 0.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_shell")
+
+[node name="Particles" type="CPUParticles2D" parent="World/Shell4"]
+emitting = false
+amount = 10
+lifetime = 0.5
+color = Color(1, 0.9, 0.4, 0.9)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/Shell4"]
+
+[node name="ShellShape4" type="CollisionShape2D" parent="World/Shell4"]
+shape = SubResource("cs_item")
+
+[node name="Shell5" type="Area2D" parent="World"]
+position = Vector2(2500, 192)
+script = ExtResource("7_co")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Shell5"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_shell")
+
+[node name="Glow" type="Sprite2D" parent="World/Shell5"]
+modulate = Color(1, 0.95, 0.5, 0.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_shell")
+
+[node name="Particles" type="CPUParticles2D" parent="World/Shell5"]
+emitting = false
+amount = 10
+lifetime = 0.5
+color = Color(1, 0.9, 0.4, 0.9)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/Shell5"]
+
+[node name="ShellShape5" type="CollisionShape2D" parent="World/Shell5"]
+shape = SubResource("cs_item")
+
+[node name="Shell6" type="Area2D" parent="World"]
+position = Vector2(3500, 165)
+script = ExtResource("7_co")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Shell6"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_shell")
+
+[node name="Glow" type="Sprite2D" parent="World/Shell6"]
+modulate = Color(1, 0.95, 0.5, 0.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_shell")
+
+[node name="Particles" type="CPUParticles2D" parent="World/Shell6"]
+emitting = false
+amount = 10
+lifetime = 0.5
+color = Color(1, 0.9, 0.4, 0.9)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/Shell6"]
+
+[node name="ShellShape6" type="CollisionShape2D" parent="World/Shell6"]
+shape = SubResource("cs_item")
+
+[node name="Shell7" type="Area2D" parent="World"]
+position = Vector2(5800, 180)
+script = ExtResource("7_co")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Shell7"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_shell")
+
+[node name="Glow" type="Sprite2D" parent="World/Shell7"]
+modulate = Color(1, 0.95, 0.5, 0.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_shell")
+
+[node name="Particles" type="CPUParticles2D" parent="World/Shell7"]
+emitting = false
+amount = 10
+lifetime = 0.5
+color = Color(1, 0.9, 0.4, 0.9)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/Shell7"]
+
+[node name="ShellShape7" type="CollisionShape2D" parent="World/Shell7"]
+shape = SubResource("cs_item")
+
+[node name="Shovel1" type="Area2D" parent="World"]
+position = Vector2(380, 192)
+script = ExtResource("7_co")
+item_type = "shovel"
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Shovel1"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("22_shovel")
+
+[node name="Glow" type="Sprite2D" parent="World/Shovel1"]
+modulate = Color(1, 0.95, 0.5, 0.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("22_shovel")
+
+[node name="Particles" type="CPUParticles2D" parent="World/Shovel1"]
+emitting = false
+amount = 10
+lifetime = 0.4
+color = Color(0.8, 0.8, 0.9, 0.9)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/Shovel1"]
+
+[node name="ShovelShape" type="CollisionShape2D" parent="World/Shovel1"]
+shape = SubResource("cs_item")
+
+[node name="Bucket1" type="Area2D" parent="World"]
+position = Vector2(750, 192)
+script = ExtResource("7_co")
+item_type = "bucket"
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Bucket1"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("26_bk")
+
+[node name="Glow" type="Sprite2D" parent="World/Bucket1"]
+modulate = Color(0.6, 0.9, 1, 0.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("26_bk")
+
+[node name="Particles" type="CPUParticles2D" parent="World/Bucket1"]
+emitting = false
+amount = 10
+lifetime = 0.4
+color = Color(0.5, 0.8, 1, 0.9)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="World/Bucket1"]
+
+[node name="BucketShape" type="CollisionShape2D" parent="World/Bucket1"]
+shape = SubResource("cs_item")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -20)
+limit_left = 0
+limit_top = -200
+limit_right = 6400
+limit_bottom = 300
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="Ichigo" type="CharacterBody2D" parent="."]
+position = Vector2(80, 200)
+script = ExtResource("2_pl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ichigo"]
+position = Vector2(0, -19)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("sf_ichigo")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ichigo"]
+position = Vector2(0, -14)
+shape = SubResource("cs_player")
+
+[node name="InteractArea" type="Area2D" parent="Ichigo"]
+
+[node name="InteractShape" type="CollisionShape2D" parent="Ichigo/InteractArea"]
+position = Vector2(20, -10)
+shape = SubResource("rs_interact")
+
+[node name="CollectArea" type="Area2D" parent="Ichigo"]
+
+[node name="CollectShape" type="CollisionShape2D" parent="Ichigo/CollectArea"]
+position = Vector2(0, -14)
+shape = SubResource("cs_collect")
+
+[node name="Dust" type="CPUParticles2D" parent="Ichigo"]
+emitting = false
+lifetime = 0.35
+speed_scale = 1.5
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, 150)
+initial_velocity_min = 12.0
+initial_velocity_max = 28.0
+color = Color(0.886, 0.831, 0.647, 0.7)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+
+[node name="AmbiencePlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 9.0
+offset_right = 4.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_hu")
+
+[node name="ProgressFill" type="ProgressBar" parent="UI/HUD"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 10.0
+offset_right = 80.0
+offset_bottom = 22.0
+show_percentage = false
+
+[node name="Flash" type="ColorRect" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -11.0
+offset_right = -4.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.95, 0.5, 0)
+
+[node name="NarrativeUI" type="Control" parent="UI"]
+layout_mode = 3
+anchor_left = 0.1
+anchor_top = 0.58
+anchor_right = 0.9
+anchor_bottom = 0.76
+mouse_filter = 2
+script = ExtResource("5_na")
+
+[node name="Label" type="Label" parent="UI/NarrativeUI"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(0.94, 0.9, 0.76, 1)
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
