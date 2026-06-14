@@ -127,22 +127,10 @@ Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e rep
   - Implementação da estrutura base da FSM, incluindo os estados principais e as transições fundamentais;
   - Testes iniciais de jogabilidade e integração entre FSM, áudio e interface;
   - Documentação técnica da arquitetura e do funcionamento do motor narrativo;
-  - Ampliação da FSM para comportar novas fases (“Ruínas do Oceano” e “Horizonte de Esperança”);
   - Implementação completa do sistema de persistência (save, schema e versionamento);
   - Integração da trilha sonora dinâmica e efeitos ambientais responsivos ao estado do jogo;
   - Otimização do desempenho e melhoria da experiência do jogador.
   - Finalização da documentação técnica.
-
-### 4.2. Marcos e Checkpoints
-
-| **Marco**  |                     **Descrição**                             |          **Previsão**             |
-|------------|---------------------------------------------------------------|-----------------------------------|
-|   **M1**   | Documento de design                                           | Outubro / 2025                    |
-|   **M2**   | Protótipos e sprites completos das Fases                      | Janeiro / 2026                   |
-|   **M3**   | Início da FSM com controle ambiental completo                 | Janeiro / 2026                    |
-|   **M4**   | Integrar fases e sistema de persistência                      | Março / 2026                      |
-|   **M5**   | Versão final e entrega do Portfólio II                        | Primeira quinzena de Junho / 2026 |
-
 
 ## 5. Referências
 
