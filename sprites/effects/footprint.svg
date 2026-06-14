@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="48">
+  <!-- Dedos do pé -->
+  <rect x="2"  y="8"  width="5" height="7" fill="#c8a878" opacity="0.8"/>
+  <rect x="9"  y="5"  width="5" height="8" fill="#c8a878" opacity="0.8"/>
+  <rect x="16" y="6"  width="5" height="8" fill="#c8a878" opacity="0.8"/>
+  <rect x="22" y="9"  width="5" height="7" fill="#c8a878" opacity="0.8"/>
+  <rect x="0"  y="12" width="4" height="5" fill="#c8a878" opacity="0.8"/>
+  <!-- Parte dianteira do pé -->
+  <rect x="4"  y="13" width="24" height="10" fill="#c8a878" opacity="0.8"/>
+  <rect x="2"  y="15" width="28" height="7"  fill="#c8a878" opacity="0.8"/>
+  <!-- Arco -->
+  <rect x="8"  y="22" width="14" height="10" fill="#c8a878" opacity="0.8"/>
+  <!-- Calcanhar -->
+  <rect x="6"  y="30" width="20" height="14" fill="#c8a878" opacity="0.8"/>
+  <rect x="4"  y="32" width="24" height="10" fill="#c8a878" opacity="0.8"/>
+</svg>

@@ -1,9 +1,12 @@
 extends Control
 
 const ITEM_TEXTURES: Dictionary = {
-	"shell":  preload("res://sprites/items/shell_a.svg"),
-	"shovel": preload("res://sprites/items/shovel.svg"),
-	"bucket": preload("res://sprites/items/bucket.svg"),
+	"shell":    preload("res://sprites/items/shell_a.svg"),
+	"shovel":   preload("res://sprites/items/shovel.svg"),
+	"bucket":   preload("res://sprites/items/bucket.svg"),
+	"photo":    preload("res://sprites/items/photo.svg"),
+	"diary":    preload("res://sprites/items/diary.svg"),
+	"necklace": preload("res://sprites/items/necklace.svg"),
 }
 
 @onready var prog_bar: ProgressBar = $ProgressFill
@@ -88,7 +91,6 @@ func _build_inv_bar() -> void:
 		icon.modulate.a    = 0.0
 		slot.add_child(icon)
 
-		# count badge (bottom-right, hidden when count <= 1)
 		var lbl := Label.new()
 		lbl.anchor_left   = 0.0
 		lbl.anchor_right  = 1.0
@@ -102,7 +104,6 @@ func _build_inv_bar() -> void:
 		lbl.visible = false
 		slot.add_child(lbl)
 
-		# key-number hint (top-left corner, always visible)
 		var num := Label.new()
 		num.text          = str(i + 1)
 		num.anchor_left   = 0.0
@@ -154,9 +155,33 @@ func add_to_inventory(item_name: String) -> void:
 	else:
 		_inventory[item_name] = 1
 		_inv_order.append(item_name)
-		# auto-select first item added
 		if _active_slot < 0:
 			_select_slot(0)
+	_refresh_inv()
+
+
+func get_inventory_data() -> Dictionary:
+	return {
+		"inventory": _inventory.duplicate(),
+		"order": _inv_order.duplicate(),
+		"active": _active_slot
+	}
+
+
+func restore_inventory(data: Dictionary) -> void:
+	_inventory = {}
+	_inv_order = []
+	var saved_inv: Dictionary = data.get("inventory", {})
+	var saved_order: Array    = data.get("order", [])
+	for item_name in saved_order:
+		if saved_inv.has(item_name):
+			_inventory[item_name] = saved_inv[item_name]
+			_inv_order.append(item_name)
+	var active: int = data.get("active", -1)
+	if active >= 0 and active < _inv_order.size():
+		_select_slot(active)
+	elif _inv_order.size() > 0:
+		_select_slot(0)
 	_refresh_inv()
 
 
@@ -185,7 +210,6 @@ func update_progress(v: float) -> void:
 	tw.tween_property(prog_bar, "value", v * 100.0, 0.4)
 
 
-# kept for compatibility — inventory bar handles display now
 func update_shells(_n: int) -> void:
 	pass
 

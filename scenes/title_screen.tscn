@@ -1,0 +1,120 @@
+[gd_scene load_steps=2 format=3 uid="uid://btitlscr0001"]
+
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_ts"]
+
+[node name="TitleScreen" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ts")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TitleImage" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MenuOverlay" type="ColorRect" parent="."]
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -78.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="MenuNovoJogo" type="Label" parent="."]
+offset_left = 135.0
+offset_top = 113.0
+offset_right = 272.0
+offset_bottom = 125.0
+text = "Novo Jogo"
+theme_override_font_sizes/font_size = 10
+
+[node name="MenuContinuar" type="Label" parent="."]
+offset_left = 135.0
+offset_top = 128.0
+offset_right = 272.0
+offset_bottom = 140.0
+text = "Continuar"
+theme_override_font_sizes/font_size = 10
+
+[node name="MenuCreditos" type="Label" parent="."]
+offset_left = 135.0
+offset_top = 143.0
+offset_right = 272.0
+offset_bottom = 155.0
+text = "Créditos"
+theme_override_font_sizes/font_size = 10
+
+[node name="MenuSair" type="Label" parent="."]
+offset_left = 135.0
+offset_top = 158.0
+offset_right = 272.0
+offset_bottom = 170.0
+text = "Sair"
+theme_override_font_sizes/font_size = 10
+
+[node name="Cursor" type="Label" parent="."]
+offset_left = 122.0
+offset_top = 113.0
+offset_right = 135.0
+offset_bottom = 125.0
+text = "►"
+theme_override_font_sizes/font_size = 10
+
+[node name="CreditsPanel" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.06, 0.96)
+
+[node name="CreditsTitle" type="Label" parent="CreditsPanel"]
+offset_left = 0.0
+offset_top = 34.0
+offset_right = 320.0
+offset_bottom = 50.0
+text = "Créditos"
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+
+[node name="CreditsText" type="Label" parent="CreditsPanel"]
+offset_left = 20.0
+offset_top = 58.0
+offset_right = 300.0
+offset_bottom = 160.0
+text = "Direção, Arte e Programação
+[seu nome]
+
+Música
+[compositor]
+
+Motor
+Godot Engine 4.5"
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CreditsClose" type="Label" parent="CreditsPanel"]
+offset_left = 0.0
+offset_top = 164.0
+offset_right = 320.0
+offset_bottom = 176.0
+text = "[ESC] Voltar"
+theme_override_font_sizes/font_size = 8
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+horizontal_alignment = 1

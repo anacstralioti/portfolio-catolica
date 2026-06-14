@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bflashback05"]
+
+[ext_resource type="Script" path="res://scripts/flashback.gd" id="1_fb"]
+
+[node name="FlashbackOverlay" type="CanvasLayer"]
+layer = 50
+script = ExtResource("1_fb")
+
+[node name="FlashPanel" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="FlashPanel"]
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.98, 0.96, 0.92, 1)
+
+[node name="Caption" type="Label" parent="FlashPanel"]
+offset_left = 22.0
+offset_top = 110.0
+offset_right = 298.0
+offset_bottom = 168.0
+theme_override_colors/font_color = Color(0.18, 0.13, 0.08, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

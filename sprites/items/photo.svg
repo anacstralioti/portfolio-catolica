@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96">
+  <!-- Moldura marrom -->
+  <rect x="0" y="0" width="96" height="96" fill="#7a5230"/>
+  <!-- Interior da foto -->
+  <rect x="8" y="8" width="80" height="80" fill="#e8d4a0"/>
+  <!-- Céu na foto -->
+  <rect x="8" y="8" width="80" height="38" fill="#87ceeb"/>
+  <!-- Oceano -->
+  <rect x="8" y="42" width="80" height="14" fill="#4a90d9"/>
+  <!-- Areia -->
+  <rect x="8" y="56" width="80" height="32" fill="#e8c870"/>
+  <!-- Figura pai (alta) -->
+  <rect x="22" y="36" width="8" height="24" fill="#2d3a6b"/>
+  <rect x="22" y="29" width="8" height="9" fill="#c49870"/>
+  <!-- Figura mãe (média) -->
+  <rect x="38" y="40" width="7" height="20" fill="#7a3a6b"/>
+  <rect x="38" y="33" width="7" height="9" fill="#c49870"/>
+  <!-- Ichigo criança (pequena, chapéu morango) -->
+  <rect x="54" y="46" width="6" height="14" fill="#c83c3c"/>
+  <rect x="53" y="39" width="8" height="9" fill="#c49870"/>
+  <rect x="52" y="35" width="10" height="6" fill="#d02020"/>
+  <rect x="54" y="32" width="6" height="5" fill="#208030"/>
+  <!-- Sol -->
+  <rect x="76" y="12" width="8" height="8" fill="#f5e060"/>
+  <!-- Detalhes moldura -->
+  <rect x="0" y="0" width="96" height="4" fill="#5a3a18"/>
+  <rect x="0" y="92" width="96" height="4" fill="#5a3a18"/>
+  <rect x="0" y="0" width="4" height="96" fill="#5a3a18"/>
+  <rect x="92" y="0" width="4" height="96" fill="#5a3a18"/>
+</svg>

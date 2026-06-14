@@ -3,7 +3,17 @@
     "allow": [
       "PowerShell(Remove-Item \"c:\\\\Users\\\\anast\\\\Downloads\\\\ichigo_v2\\\\.godot\\\\imported\\\\beach_sunset.svg-6cd35d937aebb4651c536b13ca31f779.ctex\" -ErrorAction SilentlyContinue; \\(Get-Item \"c:\\\\Users\\\\anast\\\\Downloads\\\\ichigo_v2\\\\background\\\\beach_sunset.svg\"\\).LastWriteTime = Get-Date; Write-Host \"done\")",
       "PowerShell(Remove-Item \"c:\\\\Users\\\\anast\\\\Downloads\\\\ichigo_v2\\\\.godot\\\\imported\\\\beach_sunset.svg-6cd35d937aebb4651c536b13ca31f779.ctex\" -Force; \\(Get-Item \"c:\\\\Users\\\\anast\\\\Downloads\\\\ichigo_v2\\\\background\\\\beach_sunset.svg\"\\).LastWriteTime = Get-Date; Write-Host \"done\")",
-      "PowerShell(Remove-Item \"c:\\\\Users\\\\anast\\\\Downloads\\\\ichigo_v2\\\\.godot\\\\imported\\\\beach_sunset.svg-6cd35d937aebb4651c536b13ca31f779.ctex\" -Force -ErrorAction SilentlyContinue; \\(Get-Item \"c:\\\\Users\\\\anast\\\\Downloads\\\\ichigo_v2\\\\background\\\\beach_sunset.svg\"\\).LastWriteTime = Get-Date; Write-Host \"reimport triggered\")"
+      "PowerShell(Remove-Item \"c:\\\\Users\\\\anast\\\\Downloads\\\\ichigo_v2\\\\.godot\\\\imported\\\\beach_sunset.svg-6cd35d937aebb4651c536b13ca31f779.ctex\" -Force -ErrorAction SilentlyContinue; \\(Get-Item \"c:\\\\Users\\\\anast\\\\Downloads\\\\ichigo_v2\\\\background\\\\beach_sunset.svg\"\\).LastWriteTime = Get-Date; Write-Host \"reimport triggered\")",
+      "Bash(python gen_sprites.py)",
+      "Bash(py --version)",
+      "Bash(where python3 *)",
+      "Bash(where py *)",
+      "Bash(py gen_sprites.py)",
+      "Bash(py -c ' *)",
+      "Bash(git checkout *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\anast\\\\Downloads\\\\ichigo\" -Recurse -File)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Sort-Object)"
     ]
   }
 }

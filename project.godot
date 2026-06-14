@@ -12,9 +12,13 @@ config_version=5
 
 config/name="Ichigo: Memorias do Oceano"
 config/description="Fase 1 - Ecos do Silencio"
-run/main_scene="res://scenes/fase1_ecos_silencio.tscn"
+run/main_scene="res://scenes/title_screen.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://sprites/ichigo/ichigo_idle.svg"
+
+[autoload]
+
+GameGlobal="*res://scripts/game_global.gd"
 
 [display]
 

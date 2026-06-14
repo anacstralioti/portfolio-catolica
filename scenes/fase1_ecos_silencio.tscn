@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://tqqu4aavr42n"]
+[gd_scene load_steps=73 format=3 uid="uid://tqqu4aavr42n"]
 
 [ext_resource type="Script" uid="uid://qkfxm4lvh8a2" path="res://scripts/game_manager.gd" id="1_gm"]
 [ext_resource type="Script" uid="uid://t3m10ftmmd08" path="res://scripts/player.gd" id="2_pl"]
@@ -11,11 +11,31 @@
 [ext_resource type="Script" uid="uid://dcxgp6rxyrweq" path="res://scripts/sand_hole.gd" id="8_sh"]
 [ext_resource type="Script" uid="uid://c0mraxodi6qv1" path="res://scripts/crab.gd" id="9_cr"]
 [ext_resource type="Script" uid="uid://b4nb442gamxvd" path="res://scripts/puddle.gd" id="10_pu"]
-[ext_resource type="Texture2D" uid="uid://b8fieu7ekjpxl" path="res://sprites/ichigo/ichigo_idle.svg" id="12_idle"]
-[ext_resource type="Texture2D" uid="uid://ca4nbacqly5ee" path="res://sprites/ichigo/ichigo_run1.svg" id="13_run1"]
-[ext_resource type="Texture2D" uid="uid://bvf7qm6t4yh6n" path="res://sprites/ichigo/ichigo_run2.svg" id="14_run2"]
-[ext_resource type="Texture2D" uid="uid://bdsvdi4x4pui5" path="res://sprites/ichigo/ichigo_jump.svg" id="15_jump"]
-[ext_resource type="Texture2D" uid="uid://bukccehb2yhw0" path="res://sprites/ichigo/ichigo_crouch.svg" id="16_crouch"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_idle.svg" id="i1"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_idle2.svg" id="i2"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_idle3.svg" id="i3"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_run1.svg" id="r1"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_run2.svg" id="r2"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_run3.svg" id="r3"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_run4.svg" id="r4"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_run5.svg" id="r5"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_run6.svg" id="r6"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_jump.svg" id="j1"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_jump2.svg" id="j2"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_jump3.svg" id="j3"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_jump4.svg" id="j4"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_fall1.svg" id="f1"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_fall2.svg" id="f2"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_fall3.svg" id="f3"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_fall4.svg" id="f4"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_crouch.svg" id="c1"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_crouch2.svg" id="c2"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_pickup1.svg" id="p1"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_pickup2.svg" id="p2"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_pickup3.svg" id="p3"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_hold1.svg" id="h1"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_hold2.svg" id="h2"]
+[ext_resource type="Texture2D" path="res://sprites/ichigo/ichigo_hold3.svg" id="h3"]
 [ext_resource type="Texture2D" uid="uid://ce031vxu0cqcx" path="res://sprites/items/shell_a.svg" id="19_shell"]
 [ext_resource type="Texture2D" uid="uid://b37hf4l12gjaj" path="res://sprites/obstacles/crab.svg" id="20_crab"]
 [ext_resource type="Texture2D" uid="uid://cixpjfaqfy2pw" path="res://sprites/obstacles/sand_hole.svg" id="21_hole"]
@@ -23,6 +43,21 @@
 [ext_resource type="Texture2D" uid="uid://c0ageblcycoaa" path="res://sprites/effects/checkpoint.svg" id="23_cp"]
 [ext_resource type="Texture2D" uid="uid://13ersk2yd7c" path="res://sprites/obstacles/puddle.svg" id="25_pu"]
 [ext_resource type="Texture2D" uid="uid://bcncmkgtvu4ik" path="res://sprites/items/bucket.svg" id="26_bk"]
+[ext_resource type="Script" path="res://scripts/memory_object.gd" id="30_mo"]
+[ext_resource type="Script" path="res://scripts/trigger_zone.gd" id="31_tz"]
+[ext_resource type="Script" path="res://scripts/seagull.gd" id="32_sg"]
+[ext_resource type="Script" path="res://scripts/music_box.gd" id="33_mb"]
+[ext_resource type="Script" path="res://scripts/kite.gd" id="34_kt"]
+[ext_resource type="Texture2D" path="res://sprites/items/photo.svg" id="36_ph"]
+[ext_resource type="Texture2D" path="res://sprites/items/diary.svg" id="37_dy"]
+[ext_resource type="Texture2D" path="res://sprites/items/necklace.svg" id="38_nc"]
+[ext_resource type="Texture2D" path="res://sprites/items/musicbox.svg" id="39_mx"]
+[ext_resource type="Texture2D" path="res://sprites/obstacles/kite.svg" id="40_kite"]
+[ext_resource type="Texture2D" path="res://sprites/obstacles/seagull.svg" id="41_gull"]
+[ext_resource type="Texture2D" path="res://sprites/obstacles/radio.svg" id="42_rd"]
+[ext_resource type="Script" path="res://scripts/sand_castle.gd" id="45_sc"]
+[ext_resource type="Texture2D" path="res://sprites/obstacles/sand_castle.svg" id="46_scx"]
+[ext_resource type="Texture2D" path="res://sprites/obstacles/log_a.svg" id="47_log"]
 
 [sub_resource type="RectangleShape2D" id="rs_ground"]
 size = Vector2(6400, 20)
@@ -80,11 +115,17 @@ size = Vector2(60, 14)
 [sub_resource type="CircleShape2D" id="cs_item"]
 radius = 18.0
 
+[sub_resource type="RectangleShape2D" id="rs_trigger"]
+size = Vector2(50, 35)
+
 [sub_resource type="SpriteFrames" id="sf_ichigo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("16_crouch")
+"texture": ExtResource("c1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("c2")
 }],
 "loop": false,
 "name": &"crouch",
@@ -92,7 +133,44 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_idle")
+"texture": ExtResource("f1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("f2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("f4")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("h2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("h3")
+}],
+"loop": true,
+"name": &"hold",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("i3")
 }],
 "loop": true,
 "name": &"idle",
@@ -100,33 +178,74 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_jump")
+"texture": ExtResource("j1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("j2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("j3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("j4")
 }],
 "loop": false,
 "name": &"jump",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("13_run1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_run2")
-}],
-"loop": true,
-"name": &"run",
 "speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_run1")
+"texture": ExtResource("p1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_run2")
+"texture": ExtResource("p2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("p3")
+}],
+"loop": false,
+"name": &"pickup",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("r1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("r2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("r3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("r4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("r5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("r6")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("r1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("r2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("r3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("r4")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="cs_player"]
@@ -652,6 +771,163 @@ color = Color(0.5, 0.8, 1, 0.9)
 [node name="BucketShape" type="CollisionShape2D" parent="World/Bucket1"]
 shape = SubResource("cs_item")
 
+[node name="MemoriasLayer" type="Node2D" parent="World"]
+
+[node name="FotoFamilia" type="Node2D" parent="World/MemoriasLayer"]
+position = Vector2(2400, 195)
+script = ExtResource("30_mo")
+item_type = "photo"
+narrative_text = "Essa foto... eu não lembro de ter guardado."
+use_photo_overlay = true
+overlay_texture = ExtResource("36_ph")
+flashback_caption = "Um dia de sol na praia.\nMamãe, papai e eu —\nos três juntos."
+
+[node name="Sprite2D" type="Sprite2D" parent="World/MemoriasLayer/FotoFamilia"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("36_ph")
+
+[node name="PromptLabel" type="Label" parent="World/MemoriasLayer/FotoFamilia"]
+visible = false
+offset_left = -36.0
+offset_top = -32.0
+offset_right = 36.0
+offset_bottom = -20.0
+text = "[E] Examinar"
+horizontal_alignment = 1
+
+[node name="DiarioMolhado" type="Node2D" parent="World/MemoriasLayer"]
+position = Vector2(2850, 192)
+script = ExtResource("30_mo")
+item_type = "diary"
+narrative_text = "As páginas grudaram pelo sal... consigo ler só alguns trechos."
+prompt_text = "[E] Ler"
+use_diary_overlay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="World/MemoriasLayer/DiarioMolhado"]
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("37_dy")
+
+[node name="PromptLabel" type="Label" parent="World/MemoriasLayer/DiarioMolhado"]
+visible = false
+offset_left = -28.0
+offset_top = -32.0
+offset_right = 28.0
+offset_bottom = -20.0
+text = "[E] Ler"
+horizontal_alignment = 1
+
+[node name="Colar" type="Node2D" parent="World/MemoriasLayer"]
+position = Vector2(5200, 176)
+script = ExtResource("30_mo")
+item_type = "necklace"
+narrative_text = "O pingente de morango dela. Eu costumava pedir pra segurar nas fotos."
+prompt_text = "[E] Pegar"
+has_flashback = true
+flashback_caption = "Ela usava o pingente em todo aniversário.\n\nEu perguntei uma vez de onde tinha vindo.\n\nEla disse: 'Do mar. Um dia você entende.'\n\nAinda não entendi."
+
+[node name="Sprite2D" type="Sprite2D" parent="World/MemoriasLayer/Colar"]
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("38_nc")
+
+[node name="PromptLabel" type="Label" parent="World/MemoriasLayer/Colar"]
+visible = false
+offset_left = -28.0
+offset_top = -34.0
+offset_right = 28.0
+offset_bottom = -20.0
+text = "[E] Pegar"
+horizontal_alignment = 1
+
+[node name="CaixinhaMusica" type="Node2D" parent="World/MemoriasLayer"]
+position = Vector2(3820, 197)
+script = ExtResource("33_mb")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/MemoriasLayer/CaixinhaMusica"]
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("39_mx")
+
+[node name="PromptLabel" type="Label" parent="World/MemoriasLayer/CaixinhaMusica"]
+visible = false
+offset_left = -26.0
+offset_top = -32.0
+offset_right = 26.0
+offset_bottom = -20.0
+text = "[E] Ouvir"
+horizontal_alignment = 1
+
+[node name="CasteloAreia" type="Node2D" parent="World/MemoriasLayer"]
+position = Vector2(1450, 210)
+script = ExtResource("45_sc")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/MemoriasLayer/CasteloAreia"]
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("46_scx")
+
+[node name="PromptLabel" type="Label" parent="World/MemoriasLayer/CasteloAreia"]
+visible = false
+offset_left = -40.0
+offset_top = -36.0
+offset_right = 40.0
+offset_bottom = -22.0
+text = "[E] Encher o fosso"
+horizontal_alignment = 1
+
+[node name="TriggersLayer" type="Node2D" parent="World"]
+
+[node name="TroncoVisual" type="Sprite2D" parent="World/TriggersLayer"]
+position = Vector2(258, 208)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("47_log")
+
+[node name="ZonaTronco" type="Area2D" parent="World/TriggersLayer"]
+position = Vector2(270, 210)
+script = ExtResource("31_tz")
+narrative_text = "Um tronco arrastado pelo mar. De onde teria vindo?"
+
+[node name="TriggerShape" type="CollisionShape2D" parent="World/TriggersLayer/ZonaTronco"]
+shape = SubResource("rs_trigger")
+
+[node name="RadioVisual" type="Sprite2D" parent="World/TriggersLayer"]
+position = Vector2(5630, 202)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("42_rd")
+
+[node name="ZonaRadio" type="Area2D" parent="World/TriggersLayer"]
+position = Vector2(5630, 204)
+script = ExtResource("31_tz")
+narrative_text = "Um rádio. Só estática... mas ouço de onde estou."
+
+[node name="TriggerShape2" type="CollisionShape2D" parent="World/TriggersLayer/ZonaRadio"]
+shape = SubResource("rs_trigger")
+
+[node name="GaivotasLayer" type="Node2D" parent="World"]
+
+[node name="Gaivota1" type="Node2D" parent="World/GaivotasLayer"]
+position = Vector2(1230, 186)
+script = ExtResource("32_sg")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/GaivotasLayer/Gaivota1"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("41_gull")
+
+[node name="Gaivota2" type="Node2D" parent="World/GaivotasLayer"]
+position = Vector2(4260, 186)
+script = ExtResource("32_sg")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/GaivotasLayer/Gaivota2"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("41_gull")
+
+[node name="PipaLayer" type="Node2D" parent="World"]
+
+[node name="Pipa" type="Node2D" parent="World/PipaLayer"]
+position = Vector2(1630, 146)
+script = ExtResource("34_kt")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/PipaLayer/Pipa"]
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("40_kite")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -20)
 limit_left = 0
@@ -686,6 +962,11 @@ shape = SubResource("rs_interact")
 [node name="CollectShape" type="CollisionShape2D" parent="Ichigo/CollectArea"]
 position = Vector2(0, -14)
 shape = SubResource("cs_collect")
+
+[node name="HeldItemSprite" type="Sprite2D" parent="Ichigo"]
+position = Vector2(8, -10)
+scale = Vector2(0.12, 0.12)
+visible = false
 
 [node name="Dust" type="CPUParticles2D" parent="Ichigo"]
 emitting = false

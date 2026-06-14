@@ -15,6 +15,10 @@ var _pause_t : float = 0.0
 
 
 func _ready() -> void:
+	add_to_group("crab")
+	# camada 2: caranguejo anda no chão (mask=1) mas não bloqueia o player (layer=2)
+	collision_layer = 2
+	collision_mask  = 1
 	_start_x = global_position.x
 	if anim: anim.play("walk")
 

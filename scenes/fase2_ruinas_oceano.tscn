@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfase2ruin04"]
+
+[ext_resource type="Script" uid="uid://dpo11t3ku6hxj" path="res://scripts/fase2_placeholder.gd" id="1_f2"]
+
+[node name="Fase2RuinasOceano" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f2")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.02, 0.059, 0.11, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 320.0
+offset_bottom = 80.0
+text = "Capítulo 2 — Ruínas do Oceano"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="."]
+layout_mode = 0
+offset_top = 90.0
+offset_right = 320.0
+offset_bottom = 106.0
+text = "Em desenvolvimento..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PressKey" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 134.0
+offset_right = 303.0
+offset_bottom = 157.0
+text = "Pressione qualquer tecla para voltar"
+horizontal_alignment = 1

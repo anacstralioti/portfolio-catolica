@@ -1,0 +1,123 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2dl6bnprmhsm"]
+
+[ext_resource type="Script" path="res://scripts/diary_overlay.gd" id="1_do"]
+
+[node name="DiaryOverlay" type="CanvasLayer"]
+layer = 55
+script = ExtResource("1_do")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dimmer" type="ColorRect" parent="Root"]
+layout_mode = 3
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.03, 0.02, 0.92)
+
+[node name="Page" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.91, 0.86, 0.72, 1)
+
+[node name="WaterStainA" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.55, 0.65, 0.80, 0.18)
+
+[node name="WaterStainB" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.50, 0.62, 0.78, 0.14)
+
+[node name="Title" type="Label" parent="Root"]
+layout_mode = 0
+theme_override_colors/font_color = Color(0.20, 0.14, 0.06, 0.70)
+text = "Janeiro —"
+
+[node name="Ink1" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.08, 0.10, 0.22, 0.55)
+
+[node name="Ink2" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.08, 0.10, 0.22, 0.35)
+
+[node name="Ink3" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.08, 0.10, 0.22, 0.50)
+
+[node name="Ink4" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.08, 0.10, 0.22, 0.28)
+
+[node name="Ink5" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.08, 0.10, 0.22, 0.42)
+
+[node name="Ink6" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.08, 0.10, 0.22, 0.30)
+
+[node name="ReadLine1" type="Label" parent="Root"]
+layout_mode = 0
+theme_override_colors/font_color = Color(0.10, 0.06, 0.02, 1.0)
+text = "hoje foi o primeiro aniversário de Ichigo"
+
+[node name="ReadLine2" type="Label" parent="Root"]
+layout_mode = 0
+theme_override_colors/font_color = Color(0.10, 0.06, 0.02, 1.0)
+text = "desde que nos mudamos para a praia....."
+
+[node name="Ink7" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.08, 0.10, 0.22, 0.48)
+
+[node name="Ink8" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.08, 0.10, 0.22, 0.25)
+
+[node name="Ink9" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.08, 0.10, 0.22, 0.38)
+
+[node name="ReadLine3" type="Label" parent="Root"]
+layout_mode = 0
+theme_override_colors/font_color = Color(0.10, 0.06, 0.02, 1.0)
+text = "Ichigo ama os caranguejos"
+
+[node name="Ink10" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.08, 0.10, 0.22, 0.44)
+
+[node name="Ink11" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.08, 0.10, 0.22, 0.22)
+
+[node name="Ink12" type="ColorRect" parent="Root"]
+layout_mode = 0
+color = Color(0.08, 0.10, 0.22, 0.30)
+
+[node name="CloseHint" type="Label" parent="Root"]
+layout_mode = 0
+theme_override_colors/font_color = Color(0.50, 0.50, 0.50, 0.85)
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "[E] continuar"

@@ -11,8 +11,8 @@ func _ready() -> void:
 	if lbl: lbl.text = ""
 
 
-func show_text(text: String, dur: float = 4.0) -> void:
-	if _busy:
+func show_text(text: String, dur: float = 2.5, interrupt: bool = false) -> void:
+	if _busy and not interrupt:
 		_queue.append(text)
 		return
 	_display(text, dur)
@@ -25,10 +25,10 @@ func _display(text: String, dur: float) -> void:
 		lbl.visible_ratio = 0.0
 	if _tw: _tw.kill()
 	_tw = create_tween()
-	_tw.tween_property(self, "modulate:a", 1.0, 0.7)
-	_tw.tween_property(lbl, "visible_ratio", 1.0, text.length() * 0.045)
+	_tw.tween_property(self, "modulate:a", 1.0, 0.3)
+	_tw.tween_property(lbl, "visible_ratio", 1.0, text.length() * 0.035)
 	_tw.tween_interval(dur)
-	_tw.tween_property(self, "modulate:a", 0.0, 1.0)
+	_tw.tween_property(self, "modulate:a", 0.0, 0.5)
 	_tw.tween_callback(_done)
 
 

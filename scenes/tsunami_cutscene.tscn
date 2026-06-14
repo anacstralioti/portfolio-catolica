@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://btsunami0003"]
+
+[ext_resource type="Script" path="res://scripts/tsunami_cutscene.gd" id="1_tc"]
+
+[node name="TsunamiCutscene" type="Node2D"]
+script = ExtResource("1_tc")
+
+[node name="FadeLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="ScreenFade" type="ColorRect" parent="FadeLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

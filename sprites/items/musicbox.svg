@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+  <!-- Corpo da caixa -->
+  <rect x="6" y="36" width="64" height="38" fill="#8b5e3c"/>
+  <rect x="4" y="34" width="68" height="42" fill="#7a5230"/>
+  <!-- Detalhes laterais -->
+  <rect x="4" y="34" width="6" height="42" fill="#6b4422"/>
+  <rect x="70" y="34" width="6" height="42" fill="#6b4422"/>
+  <!-- Tampa -->
+  <rect x="4" y="24" width="68" height="14" fill="#a07040"/>
+  <rect x="6" y="26" width="64" height="10" fill="#c49050"/>
+  <!-- Coração decorativo na tampa -->
+  <rect x="29" y="27" width="6" height="8" fill="#c03030"/>
+  <rect x="27" y="29" width="4" height="6" fill="#c03030"/>
+  <rect x="35" y="29" width="4" height="6" fill="#c03030"/>
+  <rect x="45" y="27" width="6" height="8" fill="#c03030"/>
+  <rect x="43" y="29" width="4" height="6" fill="#c03030"/>
+  <rect x="51" y="29" width="4" height="6" fill="#c03030"/>
+  <!-- Chave de corda -->
+  <rect x="70" y="40" width="10" height="6" fill="#c0a030"/>
+  <rect x="74" y="36" width="6" height="14" fill="#c0a030"/>
+  <rect x="72" y="34" width="10" height="4" fill="#d4b840"/>
+  <!-- Notas musicais -->
+  <rect x="16" y="44" width="4" height="12" fill="#f0e0a0"/>
+  <rect x="18" y="44" width="7" height="4" fill="#f0e0a0"/>
+  <rect x="14" y="52" width="6" height="6" fill="#f0e0a0"/>
+  <rect x="34" y="48" width="4" height="12" fill="#f0e0a0"/>
+  <rect x="36" y="48" width="7" height="4" fill="#f0e0a0"/>
+  <rect x="32" y="56" width="6" height="6" fill="#f0e0a0"/>
+</svg>

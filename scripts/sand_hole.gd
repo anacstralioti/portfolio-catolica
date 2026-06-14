@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 ## Detection radius in world units — player triggers prompt when within this distance
-const DETECT_RADIUS := 55.0
+const DETECT_RADIUS := 80.0
 
 @onready var spr: Sprite2D            = $Sprite2D
 @onready var col: CollisionShape2D    = $Collision
@@ -14,6 +14,7 @@ var _connected := false
 
 
 func _ready() -> void:
+	add_to_group("sandhole")
 	if prompt: prompt.visible = false
 
 
@@ -42,11 +43,15 @@ func _physics_process(_d: float) -> void:
 func _show_prompt(body: Node2D) -> void:
 	if not prompt: return
 	prompt.visible = true
-	if body.has_shovel:
-		prompt.text = "[E] Tapar buraco"
+	var active: String = body.get_active_item()
+	if active == "shovel":
+		prompt.text    = "[E] Tapar buraco"
 		prompt.modulate = Color.WHITE
+	elif body.has_shovel:
+		prompt.text    = "Equipe a pá!"
+		prompt.modulate = Color(1.0, 0.85, 0.3, 1.0)
 	else:
-		prompt.text = "Precisa de uma pá!"
+		prompt.text    = "Precisa de uma pá"
 		prompt.modulate = Color(1.0, 0.5, 0.3, 1.0)
 
 
@@ -55,7 +60,8 @@ func _hide_prompt() -> void:
 
 
 func _try_fill() -> void:
-	if _filled or not _player or not _player.has_shovel: return
+	if _filled or not _player: return
+	if _player.get_active_item() != "shovel": return
 	fill()
 
 
