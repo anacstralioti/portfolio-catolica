@@ -1,26 +1,31 @@
 extends StaticBody2D
 
-## Detection radius in world units — player triggers prompt when within this distance
-const DETECT_RADIUS := 80.0
+# Buraco de areia, obstáculo que bloqueia o caminho de Ichigo.
+# Só pode ser preenchido se o jogador tiver a pá equipada no slot ativo.
+# Usa conexão dinâmica de sinal para evitar que interact_pressed dispare em objetos distantes.
 
-@onready var spr: Sprite2D            = $Sprite2D
-@onready var col: CollisionShape2D    = $Collision
-@onready var prompt: Label            = $Prompt
-@onready var sfx: AudioStreamPlayer2D = $SFX
+const DETECT_RADIUS := 80.0  # distância (px) em que o prompt aparece e o sinal é conectado
 
-var _filled := false
-var _player: Node2D = null
-var _connected := false
+@onready var spr:    Sprite2D            = $Sprite2D
+@onready var col:    CollisionShape2D    = $Collision
+@onready var prompt: Label               = $Prompt
+@onready var sfx:    AudioStreamPlayer2D = $SFX
+
+var _filled    := false   # após preenchido, o buraco não bloqueia mais
+var _player:     Node2D = null
+var _connected := false   # controla se o sinal interact_pressed está conectado
 
 
 func _ready() -> void:
 	add_to_group("sandhole")
 	if prompt: prompt.visible = false
+	if sfx: sfx.stream = ProceduralSFX.sand_fill()
 
 
 func _physics_process(_d: float) -> void:
 	if _filled: return
 
+	# Busca o player uma única vez (evita get_first_node_in_group todo frame)
 	if not _player:
 		_player = get_tree().get_first_node_in_group("player")
 	if not _player: return
@@ -29,6 +34,8 @@ func _physics_process(_d: float) -> void:
 
 	if close:
 		_show_prompt(_player)
+		# Conecta o sinal apenas quando próximo, desconecta ao se afastar.
+		# Isso evita que pressionar E em um buraco distante dispare _try_fill.
 		if not _connected:
 			_connected = true
 			_player.interact_pressed.connect(_try_fill)
@@ -44,6 +51,7 @@ func _show_prompt(body: Node2D) -> void:
 	if not prompt: return
 	prompt.visible = true
 	var active: String = body.get_active_item()
+	# O prompt muda conforme o estado do inventário, orientando o jogador
 	if active == "shovel":
 		prompt.text    = "[E] Tapar buraco"
 		prompt.modulate = Color.WHITE
@@ -61,6 +69,7 @@ func _hide_prompt() -> void:
 
 func _try_fill() -> void:
 	if _filled or not _player: return
+	# Verifica novamente o item ativo no momento do pressionar E
 	if _player.get_active_item() != "shovel": return
 	fill()
 
@@ -70,7 +79,10 @@ func fill() -> void:
 	_hide_prompt()
 	if _connected and _player and _player.interact_pressed.is_connected(_try_fill):
 		_player.interact_pressed.disconnect(_try_fill)
+
 	if sfx: sfx.play()
+
+	# Animação de preenchimento: desvanece o sprite e desativa a colisão
 	var tw := create_tween()
 	tw.tween_property(spr, "modulate:a", 0.0, 0.4)
 	tw.tween_callback(func(): if col: col.disabled = true)

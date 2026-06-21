@@ -1,5 +1,8 @@
 extends Control
 
+# HUD, barra de progresso e inventário de 8 slots construídos 100% por código.
+# Não há cena .tscn: todos os nós são instanciados em _build_inv_bar() no _ready.
+
 const ITEM_TEXTURES: Dictionary = {
 	"shell":    preload("res://sprites/items/shell_a.svg"),
 	"shovel":   preload("res://sprites/items/shovel.svg"),
@@ -10,14 +13,14 @@ const ITEM_TEXTURES: Dictionary = {
 }
 
 @onready var prog_bar: ProgressBar = $ProgressFill
-@onready var flash: ColorRect       = $Flash
+@onready var flash: ColorRect       = $Flash  # flash branco ao coletar concha
 
-var _inventory: Dictionary = {}
-var _inv_order: Array      = []
-var _slot_icons: Array     = []
-var _slot_labels: Array    = []
-var _slot_styles: Array    = []
-var _active_slot: int      = -1
+var _inventory: Dictionary = {}   # item_name → quantidade
+var _inv_order: Array      = []   # ordem de inserção dos itens (determina posição no slot)
+var _slot_icons: Array     = []   # TextureRect de cada slot (índice 0–7)
+var _slot_labels: Array    = []   # Label "x2", "x3" de quantidade
+var _slot_styles: Array    = []   # StyleBoxFlat, manipulado para highlight do slot ativo
+var _active_slot: int      = -1   # -1 = nenhum slot selecionado
 
 
 func _ready() -> void:
@@ -28,6 +31,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	# Teclas 1–8 selecionam o slot correspondente (equipar item)
 	if event is InputEventKey and event.pressed and not event.echo:
 		var key: int = event.keycode
 		if key >= KEY_1 and key <= KEY_8:
@@ -35,6 +39,8 @@ func _input(event: InputEvent) -> void:
 
 
 func _build_inv_bar() -> void:
+	# Constrói toda a barra de inventário em código, evita acoplamento com .tscn.
+	# Layout: 8 slots de 22×22 px com gap de 2 px, centralizado na base da tela.
 	const SLOT_COUNT = 8
 	const SLOT_SIZE  = 22
 	const SLOT_GAP   = 2
@@ -43,6 +49,23 @@ func _build_inv_bar() -> void:
 	const BAR_H      = SLOT_SIZE + PAD * 2
 	const BOT_MARGIN = 5
 
+	# Hint de tecla acima da barra
+	var equip_hint := Label.new()
+	equip_hint.text = "Selecione 1-8 para equipar o item correspondente"
+	equip_hint.add_theme_font_size_override("font_size", 7)
+	equip_hint.add_theme_color_override("font_color", Color(1.0, 0.92, 0.62, 0.78))
+	equip_hint.anchor_left   = 0.5
+	equip_hint.anchor_right  = 0.5
+	equip_hint.anchor_top    = 1.0
+	equip_hint.anchor_bottom = 1.0
+	equip_hint.offset_left   = -BAR_W / 2.0
+	equip_hint.offset_right  =  BAR_W / 2.0
+	equip_hint.offset_top    = -(BAR_H + BOT_MARGIN + 9)
+	equip_hint.offset_bottom = -(BAR_H + BOT_MARGIN + 1)
+	equip_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	add_child(equip_hint)
+
+	# Contêiner da barra, âncora no centro-baixo para qualquer resolução
 	var bar := Control.new()
 	bar.name          = "InventoryBar"
 	bar.anchor_left   = 0.5
@@ -61,6 +84,7 @@ func _build_inv_bar() -> void:
 	bar.add_child(bg)
 
 	for i in SLOT_COUNT:
+		# Cada slot tem: StyleBoxFlat (borda), TextureRect (ícone), Label (x2), Label (número)
 		var style := StyleBoxFlat.new()
 		style.bg_color            = Color(0.08, 0.08, 0.08, 0.80)
 		style.border_color        = Color(0.45, 0.45, 0.45, 1.0)
@@ -88,9 +112,10 @@ func _build_inv_bar() -> void:
 		icon.offset_top    = 2
 		icon.offset_right  = -2
 		icon.offset_bottom = -2
-		icon.modulate.a    = 0.0
+		icon.modulate.a    = 0.0  # invisível por padrão; aparece ao adicionar item
 		slot.add_child(icon)
 
+		# Label de quantidade ("x2", "x3"…), visível apenas para itens empilhados
 		var lbl := Label.new()
 		lbl.anchor_left   = 0.0
 		lbl.anchor_right  = 1.0
@@ -104,6 +129,7 @@ func _build_inv_bar() -> void:
 		lbl.visible = false
 		slot.add_child(lbl)
 
+		# Número do slot (1–8) no canto superior esquerdo
 		var num := Label.new()
 		num.text          = str(i + 1)
 		num.anchor_left   = 0.0
@@ -127,6 +153,7 @@ func _select_slot(idx: int) -> void:
 	if idx >= _slot_icons.size():
 		return
 	_active_slot = idx
+	# Destaca o slot ativo com borda dourada (2px), os demais voltam ao cinza (1px)
 	for i in _slot_styles.size():
 		var s: StyleBoxFlat = _slot_styles[i]
 		if i == idx:
@@ -144,6 +171,7 @@ func _select_slot(idx: int) -> void:
 
 
 func get_active_item() -> String:
+	# Retorna o nome do item no slot ativo, ou "" se nenhum slot estiver preenchido
 	if _active_slot >= 0 and _active_slot < _inv_order.size():
 		return _inv_order[_active_slot]
 	return ""
@@ -151,16 +179,17 @@ func get_active_item() -> String:
 
 func add_to_inventory(item_name: String) -> void:
 	if _inventory.has(item_name):
-		_inventory[item_name] += 1
+		_inventory[item_name] += 1  # empilha item existente
 	else:
 		_inventory[item_name] = 1
 		_inv_order.append(item_name)
 		if _active_slot < 0:
-			_select_slot(0)
+			_select_slot(0)  # seleciona automaticamente o primeiro item adicionado
 	_refresh_inv()
 
 
 func get_inventory_data() -> Dictionary:
+	# Retorna snapshot do inventário para ser gravado no save JSON
 	return {
 		"inventory": _inventory.duplicate(),
 		"order": _inv_order.duplicate(),
@@ -169,6 +198,7 @@ func get_inventory_data() -> Dictionary:
 
 
 func restore_inventory(data: Dictionary) -> void:
+	# Reconstrói o inventário a partir do save, preserva a ordem original dos itens
 	_inventory = {}
 	_inv_order = []
 	var saved_inv: Dictionary = data.get("inventory", {})
@@ -186,6 +216,7 @@ func restore_inventory(data: Dictionary) -> void:
 
 
 func _refresh_inv() -> void:
+	# Sincroniza os ícones visuais com o estado interno do inventário
 	for i in _slot_icons.size():
 		if i < _inv_order.size():
 			var iname: String  = _inv_order[i]
@@ -204,6 +235,7 @@ func _refresh_inv() -> void:
 
 
 func update_progress(v: float) -> void:
+	# Anima a barra de progresso suavemente (0.4s) em vez de atualizar imediatamente
 	if not prog_bar:
 		return
 	var tw := create_tween()

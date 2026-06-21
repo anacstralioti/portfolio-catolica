@@ -1,0 +1,222 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpausemenu01"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_pm"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 30
+process_mode = 3
+script = ExtResource("1_pm")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="UI" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelBorder" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 24.0
+offset_right = 236.0
+offset_bottom = 124.0
+mouse_filter = 2
+color = Color(0.38, 0.34, 0.52, 0.85)
+
+[node name="PanelBg" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 26.0
+offset_right = 234.0
+offset_bottom = 122.0
+mouse_filter = 2
+color = Color(0.06, 0.04, 0.10, 0.95)
+
+[node name="Title" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 30.0
+offset_right = 320.0
+offset_bottom = 44.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.95, 0.90, 0.60, 1.0)
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+text = "PAUSADO"
+
+[node name="Divider" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 50.0
+offset_right = 228.0
+offset_bottom = 51.0
+mouse_filter = 2
+color = Color(0.38, 0.34, 0.52, 0.60)
+
+[node name="Cursor" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 65.0
+offset_right = 114.0
+offset_bottom = 77.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 9
+text = "►"
+
+[node name="OptContinuar" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 65.0
+offset_right = 234.0
+offset_bottom = 77.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 9
+text = "Continuar"
+
+[node name="OptMenu" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 83.0
+offset_right = 234.0
+offset_bottom = 95.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 9
+text = "Voltar ao Menu"
+
+[node name="OptSair" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 101.0
+offset_right = 234.0
+offset_bottom = 113.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 9
+text = "Sair"
+
+[node name="Hint" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 148.0
+offset_right = 320.0
+offset_bottom = 158.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.70, 0.70, 0.70, 0.75)
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+text = "[E/Z] Selecionar   [ESC] Fechar"
+
+[node name="ConfirmPanel" type="Control" parent="UI"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 320.0
+offset_bottom = 180.0
+mouse_filter = 2
+visible = false
+
+[node name="ConfirmBorder" type="ColorRect" parent="UI/ConfirmPanel"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 18.0
+offset_right = 254.0
+offset_bottom = 134.0
+mouse_filter = 2
+color = Color(0.55, 0.22, 0.18, 0.92)
+
+[node name="ConfirmBg" type="ColorRect" parent="UI/ConfirmPanel"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 20.0
+offset_right = 252.0
+offset_bottom = 132.0
+mouse_filter = 2
+color = Color(0.08, 0.04, 0.04, 0.97)
+
+[node name="ConfirmTitle" type="Label" parent="UI/ConfirmPanel"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 26.0
+offset_right = 320.0
+offset_bottom = 38.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.95, 0.55, 0.40, 1.0)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+text = "Tem certeza?"
+
+[node name="ConfirmDivider1" type="ColorRect" parent="UI/ConfirmPanel"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 42.0
+offset_right = 244.0
+offset_bottom = 43.0
+mouse_filter = 2
+color = Color(0.55, 0.22, 0.18, 0.60)
+
+[node name="ConfirmMsg" type="Label" parent="UI/ConfirmPanel"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 47.0
+offset_right = 244.0
+offset_bottom = 93.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.90, 0.85, 0.80, 1.0)
+theme_override_font_sizes/font_size = 8
+autowrap_mode = 2
+text = "O progresso após o último checkpoint não está salvo e será perdido. Você recomeçará a partir do último checkpoint."
+
+[node name="ConfirmDivider2" type="ColorRect" parent="UI/ConfirmPanel"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 96.0
+offset_right = 244.0
+offset_bottom = 97.0
+mouse_filter = 2
+color = Color(0.55, 0.22, 0.18, 0.60)
+
+[node name="ConfirmCursor" type="Label" parent="UI/ConfirmPanel"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 114.0
+offset_bottom = 112.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 9
+text = "►"
+
+[node name="ConfirmOptSim" type="Label" parent="UI/ConfirmPanel"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 100.0
+offset_right = 200.0
+offset_bottom = 112.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 9
+text = "Sim, continuar"
+
+[node name="ConfirmOptNao" type="Label" parent="UI/ConfirmPanel"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 114.0
+offset_right = 200.0
+offset_bottom = 126.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 9
+text = "Não, voltar"

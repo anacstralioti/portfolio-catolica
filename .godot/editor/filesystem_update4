@@ -1,7 +1,0 @@
-res://scripts/game_manager.gd
-res://scripts/memory_object.gd
-res://scripts/sand_castle.gd
-res://scripts/player.gd
-res://scripts/diary_overlay.gd
-res://scripts/photo_overlay.gd
-res://scenes/fase2_ruinas_oceano.tscn

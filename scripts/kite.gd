@@ -1,12 +1,13 @@
 extends Node2D
 
-## Pipa rasgada — balança no galho e dispara fala ao jogador se aproximar.
+# Pipa, objeto ambiental que dispara uma fala narrativa uma única vez
+# quando o jogador se aproxima. Anima em balanço suave em loop.
 
 @export var narrative_text := "A gente soltava pipa aqui todo verão..."
 
-const NOTIFY_DIST := 60.0
+const NOTIFY_DIST := 60.0  # distância (px) para disparar a narrativa
 
-var _notified := false
+var _notified := false  # garante que a fala toca apenas uma vez
 
 
 func _ready() -> void:
@@ -14,6 +15,7 @@ func _ready() -> void:
 
 
 func _swing() -> void:
+	# Oscilação lateral em loop, simula a pipa balançando no vento
 	var tw := create_tween().set_loops()
 	tw.tween_property(self, "rotation_degrees", -11.0, 1.7).set_trans(Tween.TRANS_SINE)
 	tw.tween_property(self, "rotation_degrees",  11.0, 1.7).set_trans(Tween.TRANS_SINE)

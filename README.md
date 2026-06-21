@@ -1,144 +1,343 @@
-# Capa
+# Ichigo: Memórias do Oceano (Godot)
 
-- **Título do Projeto**: Desenvolvimento do jogo 2D “Ichigo: Memórias do Oceano” com motor narrativo baseado em Máquinas de Estados Finitos e Estrutura de Dados.
-- **Nome do Estudante**:  Ana Carolina Fanhani Stralioti.
-- **Curso**: Engenharia de Software.
-- **Data de Entrega**: 02/12/2025 (Parte 1).
+Um jogo 2D de plataforma narrativo desenvolvido em **Godot 4.5 / GDScript**, com motor narrativo baseado em **Máquinas de Estados Finitos (FSM)** e estruturas de dados.
 
-# Resumo
+Ichigo é uma criança sobrevivente de um tsunami. O jogo acompanha sua jornada pela praia logo após o desastre, coletando memórias, objetos e fragmentos de um passado que a água tentou apagar.
 
-Este trabalho compõe a proposta de portfólio “Ichigo: Memórias do Oceano”, um jogo 2D que narra a jornada simbólica de uma criança sobrevivente a um tsunami. O projeto tem como objetivo central, além da criação do jogo, o desenvolvimento de um motor narrativo baseado em Máquinas de Estados Finitos (FSM), implementadas por meio de estruturas de dados. Esse motor permitirá modificar dinamicamente cenários, obstáculos e trilha sonora, conduzindo a história de forma adaptativa e resultando em uma narrativa orientada a estados, em contraste com uma progressão linear fixa. Desenvolvido na engine Godot, utilizando GDScript, o jogo é estruturado em três fases distintas: a primeira, “Ecos do Silêncio”, representa o momento imediatamente posterior ao desastre, introduzindo o impacto inicial e a coleta de memórias; a segunda, “Ruínas do Oceano”, transforma o ambiente em um cenário de devastação concreta; e a terceira, “Horizonte de Esperança”, mostra a tempestade passando, marcando a reconstrução e o reencontro. O resultado esperado é não apenas um jogo funcional, mas um motor narrativo que possibilite o controle de estados ambientais e a criação de experiências interativas mais imersivas. A narrativa se encerra com a criança avistando sua casa e seus pais à distância, simbolizando o retorno à esperança.
+---
 
-## 1. Introdução
+## Motivação do Projeto
 
-- **Contexto**: O mercado de jogos digitais vem se expandindo e, segundo Gregory (2009, apud Miranda, 2014), jogos digitais podem ser definidos como softwaes que criam mundos virtuais onde o jogador pode controlar um personagem, interagindo com o ambiente e outros personagens (sejam eles controlados por pessoas ou pelo próprio computador). Jogos que exploram histórias emocionais têm atraído atenção crescente, mas ainda são majoritariamente baseados em progressões lineares e estáticas. O uso de máquinas de estados finitos (FSM) e estruturas de dados oferece meios de criar narrativas mais dinâmicas, adaptativas e imersivas; segundo Mellington e Funge (2009, apud Miranda, 2014), uma FSM consiste em um conjunto de estados finitos e regras de transição que determinam mudanças de estado com base em condições específicas, sendo representável por diagramas de grafos, por exemplo. Além disso, Schwab (2009, apud Miranda, 2014) e Buckland (2004, apud Miranda, 2014) destacam que as FSMs são amplamente utilizadas em jogos digitais devido à sua simplicidade, rapidez de execução e flexibilidade, características que favorecem o desenvolvimento de narrativas não lineares.
-- **Justificativa**: O projeto é relevante para a Engenharia de Software por propor um motor narrativo que, além explorar boas práticas de modelagem (FSM), aborda conceitos fundamentais (estruturas de dados, controle de estados), além de tratar o desenvolvimento de jogos, integrando-os em uma aplicação prática de impacto cultural e social.
-- **Objetivos**: 
-  - **Objetivo principal**: Desenvolver um jogo 2D com motor narrativo baseado em FSM e estruturas de dados, aplicado em uma história simbólica de sobrevivência e superação.
-  - **Objetivo secundários**:
-    - Criar uma FSM capaz de modificar dinamicamente ambientes, obstáculos e trilhas sonoras;
-    - Utilizar estrutura de dados no controle de estados narrativos;
-    - Desenvolver três fases contínuas.
+Jogos com narrativas emocionais geralmente progridem de forma linear e estática. Este projeto propõe uma abordagem diferente:
 
-## 2. Descrição do Projeto
+* **O ambiente responde ao estado emocional da narrativa**: clima e obstáculos mudam dinamicamente conforme o jogador avança, controlados por uma FSM.
+* **A história é contada pelo mundo**, não por telas de texto: objetos encontrados, NPCs que reagem à presença do jogador e flashbacks ativados por interações constroem a narrativa de forma orgânica.
+* **Estruturas de dados com propósito**: o dicionário de narrativas, as zonas de spawn e o inventário com slots são escolhas técnicas deliberadas que constroem a experiência do jogo.
 
-* **Linha de Projeto**: Jogos Digitais.
-* **Tema do Projeto**: Desenvolvimento de um jogo 2D com motor narrativo dinâmico baseado em FSM e estruturas de dados.
-* **Propósito e Uso Prático**: O projeto busca resolver a limitação de narrativas lineares em jogos digitais, oferecendo uma solução em que o ambiente responde dinamicamente ao estado atual do jogo.
-* **Público-Alvo**: Jogadores de jogos independentes (indie), estudantes e pesquisadores de game design, além de desenvolvedores interessados em narrativas interativas e motores narrativos.
-* **Problemas a Resolver**: 
-  * Limitação de narrativas estáticas em jogos;
-  * Pouca exploração de FSM e estruturas de dados em motores narrativos.
-* **Diferenciação/Ineditismo**: O projeto não apenas desenvolve um jogo, mas também um motor narrativo baseado em FSM e estruturas de dados, diferente de jogos que vinculam emoções apenas a cutscenes, aqui o ambiente inteiro responde em tempo real às transições de estado.
-* **Limitações**: 
-  * O jogo contará apenas três fases e foco em narrativa simbólica, não abrangendo progressões extensas;
-  * O motor narrativo será validado em um protótipo 2D, não em ambientes 3D.
-* **Normas e Legislações Aplicáveis**: 
-  * ESRB/PEGI: classificação indicativa (previsto como "Livre");
-  * LGPD: não se aplica diretamente, pois o jogo não coleta dados pessoais;
-  * WCAG: serão consideradas boas práticas de acessibilidade (como contraste de cores, legendas de textos narrativos).
-* **Métricas de Sucesso**: 
-  * Funcionamento correto da FSM;
-  * Clareza na correspondência entre estado ambiental e ambiente apresentado;
-  * Avaliação de jogabilidade com usuários (entendimento da narrativa).
+---
 
-## 3. Especificação Técnica
+## Documento de Design do Jogo (GDD)
 
-### 3.1. Requisitos de Software
-- **Requisitos Funcionais (RF)**:
-  - RF01 - Controle de personagem: O jogador poderá mover Ichigo (andar, correr, pular e interagir com objetos);
-  - RF02 - Sistema de coleta:	O jogador poderá coletar conchas e objetos interativos (pá, balde, foto);
-  - RF03 - Sistema de estados ambientais (FSM):	O jogo deverá alterar o ambiente, trilha sonora e obstáculos de acordo com a fase;
-  - RF04 - Sistema de checkpoints: O jogo deverá registrar pontos automáticos de salvamento ao longo do mapa;
-  - RF05 - Interações com o ambiente:	O jogador poderá empurrar objetos, preencher buracos, escalar ou ativar elementos com itens coletados;
-  - RF06 - HUD e interface: O jogo deverá exibir um contador de colecionáveis, item ativo e frases narrativas curtas;
-  - RF07 - Sistema de narrativa dinâmica:	O jogo deverá apresentar textos e eventos conforme a progressão dos estados da FSM;
-  - RF08 - Sistema de som adaptativo: A trilha sonora e os efeitos sonoros deverão reagir às mudanças de estado.
-- **Requisitos Não-Funcionais (RNF)**:
-  - RNF01	- Usabilidade:	Interface minimalista e intuitiva, sem necessidade de tutoriais externos;
-  - RNF02 -	Portabilidade: O jogo deverá ser executável em sistemas Windows (Godot export templates);
-  - RNF03	- Escalabilidade: O motor FSM e o sistema de itens devem ser modulares para reutilização em novos jogos;
-  - RNF04 -	Segurança:	Não há coleta de dados; o projeto deverá seguir boas práticas de manipulação de arquivos e integridade de save.
-  - RNF05 -	Acessibilidade: Uso de cores contrastantes e fontes legíveis em tela;
-  - RNF06 -	Armazenamento local:	Checkpoints e progresso salvos em arquivo JSON local.
-- **Representação dos Requisitos**: Inclua um Diagrama de Casos de Uso (UML)
+O GDD descreve mecânicas, narrativa, design de fases, arte, áudio e plano de testes.
+Você pode acessá-lo aqui: [GDD.md](GDD.md)
 
-- **Aderência aos Requisitos da Linha de Projeto**: O projeto “Ichigo: Memórias do Oceano” foi planejado para atender integralmente aos requisitos obrigatórios da linha de projeto Jogos Digitais, conforme descrito no regulamento de desenvolvimento de Portfólio. Cada item foi considerado desde a concepção do design até a implementação técnica na engine Godot. O protótipo será funcional, com três fases contínuas (Ecos do Silêncio, Ruínas do Oceano e Horizonte de Esperança), permitindo ao jogador iniciar, jogar e concluir a jornada sem interrupções. A progressão será controlada por uma Máquina de Estados Finitos (FSM) que regula transições ambientais e eventos narrativos, garantindo um loop completo de gameplay do início ao fim. Também, o jogo será exportado a partir da Godot em formato executável (.exe) e WebGL, permitindo execução local ou online, enquanto a versão WebGL será hospedada no itch.io para testes e demonstrações. Todo o código será mantido neste repositório, cumprindo o requisito de transparência e rastreabilidade do código. Além disso, contará, também, com uma Documentação com foco em Game Design, apresentando o personagem controlável (Ichigo) com movimentação, salto e interação, as regras e objetivos claros (coletar conchas entre outros objetos para avançar); a condição de vitória (reencontro final com os pais); o HUD funcional (contador de colecionáveis e item equipado); menus simples e feedback sonoro. Embora o foco principal seja o motor narrativo, o jogo utiliza pixel art original criada no Aseprite e trilhas sonoras dinâmicas baseadas em estados ambientais.
-Os assets visuais e sonoros seguem licenças Creative Commons BY-NC-SA 4.0 e representam o estilo artístico proposto.
+Para a documentação técnica completa (padrões de projeto, módulos, save/load, DevOps):
+[DOCUMENTACAO_TECNICA.md](DOCUMENTACAO_TECNICA.md)
 
-### 3.2. Considerações de Design
-- **Padrões de Arquitetura**: Utilização de uma Finite State Machine (FSM) para controle ambiental, permitindo que o jogo altere dinamicamente seus estados de acordo com o progresso narrativo;
-- **Decisões e Alternativas Consideradas**: Entre as engines avaliadas — Unity (C#) e Godot (GDScript) — optou-se pela Godot devido à leveza, ao código aberto (open source) e à curva de aprendizado mais acessível. Quanto à implementação da FSM, escolheu-se desenvolver uma solução própria com estruturas de dados, em vez de utilizar um plugin, visando maior flexibilidade, aprendizado técnico e possibilidade de reuso. Por fim, decidiu-se pela abordagem 2D em pixel art, em vez de 3D, considerando a viabilidade de produção de assets e o foco no design ambiental.
-- **Critérios de Escalabilidade, Resiliência e Segurança**:
-  - Escalabilidade: cada subsistema (FSM, Itens, UI, Áudio) é independente e testável, permitindo evolução modular;
-  - Resiliência: caso um módulo falhe, o jogo deve continuar sua execução; se uma transição de estado não existir, o sistema deve permanecer no estado atual e registrar um aviso em log;
-  - Segurança: os dados devem ser persistidos localmente, além de o jogo não coletar dados pessoais, apenas telemetria local opcional (como tempo de fase e itens coletados). 
+---
 
-### 3.3. Stack Tecnológica
-- **Linguagens de Programação**: 
-  - GDScript (Godot Engine): Linguagem de script nativa da Godot, de sintaxe simples e otimizada para desenvolvimento de jogos 2D. A escolha se justifica pela curva de aprendizado acessível e pela integração direta com os recursos da engine;
-  - Python (testes de FSM): Pode ser utilizado em protótipos de FSM e simulação de estruturas de dados antes da implementação final em GDScript.
-- **Frameworks e Bibliotecas**: 
-  - Godot Engine: Engine de código aberto voltada para jogos 2D/3D, escolhida pelo suporte nativo a FSM, facilidade de exportação multiplataforma e comunidade ativa;
-  - Biblioteca Godot State Machine: Biblioteca open source que fornece templates para criação de Máquinas de Estados Finitos, acelerando a implementação do motor narrativo;
-  - Godot Audio Server: Para manipulação de áudio dinâmico, permitindo alterar trilhas sonoras conforme os estados narrativos.
-- **Ferramentas de Desenvolvimento e Gestão**: 
-  - IDE Godot Editor: Ambiente oficial de desenvolvimento do jogo;
-  - Versionamento com Git + GitHub: Controle de versão para colaboração, rastreamento de mudanças e integração contínua;
-  - Kanban com Trello: Organização do fluxo de tarefas;
-  - Ferramenta gráfica Aseprite: Criação de sprites, concept art e backgrounds 2D.
-- **Licenciamento**:  
-  - **Código do Jogo**: Licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT);
-  - **Godot Engine**: Licenciada sob a [Licença MIT](https://opensource.org/licenses/MIT); 
-  - **Arte e Assets Originais (sprites, cenários, personagens)**: Licenciados sob **Creative Commons BY-NC-SA 4.0** ([link](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR)).  
-  - **Áudio e Efeitos Sonoros**:  
-    - Trilhas originais: Creative Commons licenciados sob **Creative Commons BY-NC-SA 4.0** ([link](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR)).
+## Dependências
 
-### 3.4. Considerações de Segurança
-- **Riscos Identificados**: 
-  - Vazamento ou uso indevido de assets de terceiros (arte, sons, addons);
-  - Inclusão de código malicioso em bibliotecas externas ou addons da comunidade Godot;
-  - Distribuição do jogo sem clareza de licenciamento, permitindo uso indevido.
-- **Medidas de Mitigação**: 
-  - Utilização apenas de assets originais ou com licenças compatíveis;
-  - Validação de entrada em FSM e eventos (checagem de estados válidos, limites de movimentação e colisões);
-  - Inclusão explícita de Licenciamento no repositório e no jogo.
-- **Normas e Boas Práticas Seguidas**: Boas práticas de versionamento para manter histórico confiável e rastreabilidade de código.
-- **Responsabilidade Ética**: 
-  - O jogo não coleta nem processa dados sensíveis;
-  - A temática (tragédia natural) será tratada com cuidado narrativo, buscando inspiração simbólica sem exploração sensacionalista.
-  - Todo o material será disponibilizado para fins acadêmicos e não comerciais, respeitando licenciamento aberto e princípios de uso responsável de tecnologia.
+### Software
 
-### 3.5. Conformidade e Normas Aplicáveis
-- LGPD – Lei Geral de Proteção de Dados (Brasil, 2018):
-  - O jogo não coleta nem armazena dados pessoais de usuários;
-- Direitos Autorais e Licenciamento de acordo com a Lei nº 9.610/1998 (Brasil, 1998):
-  - Todos os assets gráficos, sonoros e de código serão de autoria própria ou utilizados sob licenças abertas compatíveis;
-- Classificação Indicativa de acordo com ESRB/PEGI adaptada ao Brasil – Portaria nº 368/2014 do Ministério da Justiça (Brasil, 2014):
-  - O jogo não contém violência explícita, discurso de ódio ou elementos impróprios;
-  - Pela narrativa simbólica, enquadra-se em classificação Livre.
-   
-## 4. Próximos Passos
+* **Godot Engine 4.5** (versão LTS recomendada — mesma utilizada no desenvolvimento)
+* **GDScript** (nativo da engine, sem instalação adicional)
 
-### 4.1. Etapas Planejadas
-- O projeto “Ichigo: Memórias do Oceano” seguirá para a etapa de execução prática, com marcos definidos para acompanhamento do progresso e conclusão prevista para a primeira quinzena de junho de 2026, onde os marcos para acompanhamento do progresso serão os seguintes:
-  - Criação dos assets visuais e sonoros iniciais, com foco na ambientação da primeira fase (“Ecos do Silêncio”);
-  - Desenvolvimento das telas principais (menu inicial, HUD e sistema de pausa);
-  - Implementação da estrutura base da FSM, incluindo os estados principais e as transições fundamentais;
-  - Testes iniciais de jogabilidade e integração entre FSM, áudio e interface;
-  - Documentação técnica da arquitetura e do funcionamento do motor narrativo;
-  - Implementação completa do sistema de persistência (save, schema e versionamento);
-  - Integração da trilha sonora dinâmica e efeitos ambientais responsivos ao estado do jogo;
-  - Otimização do desempenho e melhoria da experiência do jogador.
-  - Finalização da documentação técnica.
+### Testes
 
-## 5. Referências
+* **GUT (Godot Unit Testing)** — framework de testes unitários para GDScript, disponível via AssetLib
+* Testes de comportamento de FSM, spawn determinístico e save/load
 
-BRASIL. <strong>Lei n. 13.709, de 14 de agosto de 2018</strong>. Dispõe sobre a proteção de dados pessoais e altera a Lei n. 12.965, de 23 de abril de 2014 (Marco Civil da Internet). Diário Oficial da União : seção 1, Brasília, DF, ano 155, n. 157, p. 59-64, 15 ago. 2018. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm. Acesso em: 20 set. 2025.
+### Pacotes e Recursos
 
-BRASIL. <strong>Lei n. 9.610, de 19 de fevereiro de 1998</strong>. Altera, atualiza e consolida a legislação sobre direitos autorais e dá outras providências. Diário Oficial da União: seção 1, Brasília, DF, ano 137, n. 40, p. 5-10, 20 fev. 1998. Disponível em: [https://www.planalto.gov.br/ccivil_03/leis/l9610.htm](https://www.planalto.gov.br/ccivil_03/leis/l9610.htm). Acesso em: 20 set. 2025.
+* Sprites pixel art originais criados no **Aseprite** (formato `.svg` / `.png`)
+* Áudio via `AudioStreamPlayer` e `AudioStreamPlayer2D` nativos do Godot
+* Sem dependências externas de plugins — a engine cobre todos os sistemas necessários
 
-BRASIL. Ministério da Justiça. Portaria n.º 368, de 11 de fevereiro de 2014. Diário Oficial da União: seção 1, Brasília, DF, ano 151, n.º 31, p. 4-5, 12 fev. 2014. Disponível em: [https://anttlegis.antt.gov.br/action/ActionDatalegis.php?acao=detalharAto&tipo=POR&numeroAto=00000368&seqAto=000&valorAno=2014&orgao=MJ&nomeTitulo=codigos&desItem=&desItemFim=&cod_modulo=420&cod_menu=7145](https://anttlegis.antt.gov.br/action/ActionDatalegis.php?acao=detalharAto&tipo=POR&numeroAto=00000368&seqAto=000&valorAno=2014&orgao=MJ&nomeTitulo=codigos&desItem=&desItemFim=&cod_modulo=420&cod_menu=7145). Acesso em: 20 set. 2025.
+### Plataforma Alvo
 
-MIRANDA, Lucas Vieira de. <strong>Aplicação de máquina de estados em jogos digitais</strong>. 2014.
+* **Desktop** (Windows) — exportado via Godot Export Templates e hospedado no itch.io
+* **Controles:** Teclado (setas ou WASD) + Mouse
 
+---
+
+## Modelagem Conceitual
+
+Resumo das entidades principais e suas responsabilidades:
+
+| Entidade | Tipo | Responsabilidade Principal | Script |
+| :--- | :--- | :--- | :--- |
+| **Ichigo (Player)** | `CharacterBody2D` | Física, movimentação, coleta de itens | [player.gd](scripts/player.gd) |
+| **GameManager** | `Node` | FSM narrativa, clima, spawn aleatório, save/load | [game_manager.gd](scripts/game_manager.gd) |
+| **GameGlobal** | Autoload (Singleton) | Dados persistentes entre cenas (fase, slot) | [game_global.gd](scripts/game_global.gd) |
+| **HUD** | `Control` | Inventário (8 slots), barra de progresso | [hud.gd](scripts/hud.gd) |
+| **NarrativeUI** | `Control` | Exibição de falas com efeito typewriter e fila | [narrative_ui.gd](scripts/narrative_ui.gd) |
+| **TitleScreen** | `Control` | Menu principal, seleção de slot de save | [title_screen.gd](scripts/title_screen.gd) |
+| **PauseMenu** | `CanvasLayer` | Menu de pausa com confirmação de saída | [pause_menu.gd](scripts/pause_menu.gd) |
+| **MemoryObject** | `Node2D` | Objeto de memória genérico configurável por export | [memory_object.gd](scripts/memory_object.gd) |
+| **Checkpoint** | `Area2D` | Registra ponto de salvamento e dispara save | [checkpoint.gd](scripts/checkpoint.gd) |
+| **Collectible** | `Area2D` | Item coletável com bobbing e efeitos visuais | [collectible.gd](scripts/collectible.gd) |
+| **Crab** | `CharacterBody2D` | NPC com FSM de patrulha (direita/esquerda/pausa) | [crab.gd](scripts/crab.gd) |
+| **Seagull** | `Node2D` | NPC que detecta o jogador e voa para longe | [seagull.gd](scripts/seagull.gd) |
+| **TsunamiCutscene** | `Node2D` | Cutscene pixel art renderizada inteiramente por código | [tsunami_cutscene.gd](scripts/tsunami_cutscene.gd) |
+
+---
+
+## Arquitetura
+
+### Visão Geral
+
+A arquitetura é organizada em quatro camadas com responsabilidades separadas:
+
+1. **Apresentação**: HUD, menus, overlays, narrativa
+2. **Domínio**: GameManager (FSM), Player, Checkpoint
+3. **Mundo / Entidades**: NPCs, coletáveis, objetos de memória
+4. **Infraestrutura**: GameGlobal (Autoload), arquivos JSON locais
+
+### Fluxo de Cenas
+
+```mermaid
+flowchart TD
+    TS[title_screen.tscn] -->|Novo Jogo| PI[phase_intro.tscn]
+    TS -->|Continuar| F1[fase1_ecos_silencio.tscn]
+    PI --> F1
+    F1 -->|progress >= 100%| TC[tsunami_cutscene.tscn]
+    TC --> PI2[phase_intro.tscn - Fase 2]
+    PI2 --> F2[fase2_ruinas_oceano.tscn]
+    F1 -->|ESC - Voltar ao Menu| TS
+```
+
+### Diagrama de Componentes
+
+```mermaid
+flowchart TD
+    Player -->|shell_collected / item_picked_up| GameManager
+    Player -->|interact_pressed| SandHole & SandCastle
+    GameManager -->|show_custom_narrative| NarrativeUI
+    GameManager -->|update_progress| HUD
+    GameManager -->|add_to_inventory| HUD
+    Checkpoint -->|register_checkpoint| GameManager
+    GameManager -->|_save| JSON[(user://slot.json)]
+    TitleScreen -->|current_save_slot| GameGlobal
+    GameGlobal --> GameManager
+    GameGlobal --> PhaseIntro
+```
+
+---
+
+## Componentes Principais
+
+### Motor Narrativo — FSM (`GameManager`)
+
+O ambiente inteiro reage ao estado atual da FSM, determinado pela posição X do jogador no mapa (0–6400 px):
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    [*] --> INICIO: Início da fase
+
+    INICIO: Praia quieta\nSol claro (0–15%)
+    RECONHECIMENTO: Memórias surgem\nLeve nublado (15–40%)
+    LEMBRANCA: Lembranças fortes\nCéu encoberto (40–65%)
+    CONFRONTO: Pico emocional\nChuva leve (65–85%)
+    RESOLUCAO: Caminhada final\nLuz dourada (85–100%)
+
+    INICIO --> RECONHECIMENTO: progress >= 0.15
+    RECONHECIMENTO --> LEMBRANCA: progress >= 0.40
+    LEMBRANCA --> CONFRONTO: progress >= 0.65
+    CONFRONTO --> RESOLUCAO: progress >= 0.85
+    RESOLUCAO --> [*]: phase_complete
+```
+
+Cada transição dispara simultaneamente:
+- Nova fala narrativa (via `NarrativeUI`)
+- Ajuste de clima (cor de tint + partículas de chuva)
+- Fade de detritos no cenário
+
+### Fluxo de Diálogo Narrativo
+
+```mermaid
+flowchart TD
+    A[Jogador se aproxima de objeto] --> B[Prompt aparece - Pressione E]
+    B --> C{Item necessário\nequipado?}
+    C -- Sim --> D[_collect / _use chamado]
+    C -- Não --> E[Prompt indica item faltando]
+    D --> F[show_custom_narrative disparado]
+    F --> G[NarrativeUI exibe typewriter]
+    G --> H{Tem flashback?}
+    H -- Sim --> I[Overlay carregado dinamicamente]
+    H -- Não --> J[Fala desaparece após duração]
+    I --> K[Fade-in - espera - Fade-out - queue_free]
+```
+
+### NPC — Sistema de Patrulha (`Crab`)
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    [*] --> RIGHT: Início
+    RIGHT: Andando para direita
+    LEFT: Andando para esquerda
+    PAUSE: Parado
+
+    RIGHT --> PAUSE: x >= start_x + patrol_dist
+    LEFT --> PAUSE: x <= start_x - patrol_dist
+    PAUSE --> RIGHT: timer esgotado (posição <= start_x)
+    PAUSE --> LEFT: timer esgotado (posição > start_x)
+```
+
+### Menu de Pausa — Estado com Confirmação
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    [*] --> Fechado
+    Fechado --> MAIN: ESC pressionado
+    MAIN --> Fechado: Continuar / ESC
+    MAIN --> CONFIRM: Voltar ao Menu / Sair
+    CONFIRM --> MAIN: Não, voltar / ESC
+    CONFIRM --> [*]: Sim, continuar → executa ação
+```
+
+---
+
+## Arquitetura Orientada a Conteúdo
+
+Um dos pilares do projeto é a separação entre **lógica** e **conteúdo**, permitindo que novas memórias, objetos e narrativas sejam adicionados sem modificar código existente.
+
+O script `memory_object.gd` é totalmente configurável via `@export` no Editor do Godot:
+
+```gdscript
+@export var item_type         := ""          # Item adicionado ao inventário
+@export var narrative_text    := ""          # Fala exibida ao coletar
+@export var has_flashback     := false       # Abre overlay de flashback
+@export var flashback_caption := ""          # Texto do flashback
+@export var use_photo_overlay := false       # Foto re-examinável
+@export var overlay_texture:  Texture2D = null
+@export var use_diary_overlay := false       # Abre página de diário
+```
+
+Com isso:
+- **Qualquer objeto de memória** pode ser criado no Editor sem escrever código
+- **Novas falas narrativas** são adicionadas ao dicionário `NARRATIVAS` em `game_manager.gd`
+- **Novas fases** são inseridas com um novo valor no `match` de `phase_intro.gd`
+- O **sistema de save** persiste automaticamente qualquer item adicionado via `item_type`
+
+---
+
+## Testes Automatizados
+
+O projeto utiliza o **GUT (Godot Unit Testing)** para testes de unidade e integração em GDScript. Os arquivos de teste estão em `tests/` e cobrem os módulos principais do jogo.
+
+### Arquivos de Teste
+
+| Arquivo | O que testa | Nº de testes |
+| :--- | :--- | :--- |
+| [tests/test_procedural_sfx.gd](tests/test_procedural_sfx.gd) | Geração de áudio — retorno, loop, determinismo, formato | 20 |
+| [tests/test_game_global.gd](tests/test_game_global.gd) | Singleton GameGlobal — valores padrão, atribuição, isolamento | 15 |
+| [tests/test_fsm_logica.gd](tests/test_fsm_logica.gd) | FSM — limiares de estado, progresso, checkpoints, narrativas | 18 |
+| [tests/test_inventario.gd](tests/test_inventario.gd) | HUD inventário — adicionar, empilhar, slot ativo, restore, round-trip | 17 |
+| [tests/test_coletaveis.gd](tests/test_coletaveis.gd) | Collectible, MemoryObject, SandHole, Checkpoint — estado inicial e lógica | 15 |
+
+### Como Rodar os Testes
+
+1. No Godot Editor, abra **AssetLib**, pesquise **"GUT"** e instale
+2. Ative em **Project → Project Settings → Plugins → GUT: Enable**
+3. No painel GUT que aparece, clique em **Run All**
+
+O arquivo `.gutconfig.json` na raiz do projeto aponta automaticamente para `tests/`.
+
+---
+
+## Registro de Decisões (ADR)
+
+| Decisão | Alternativa Considerada | Motivo da Escolha |
+| :--- | :--- | :--- |
+| **Godot 4.5 / GDScript** | Unity / C# | Código aberto, leveza, curva de aprendizado menor e exportação nativa para Windows |
+| **FSM própria com `enum`** | Plugin de state machine | Controle total, aprendizado técnico, sem dependências externas |
+| **Save em JSON local** | PlayerPrefs / banco de dados | Transparência do formato, facilidade de debug, sem dependências de servidor |
+| **Spawn com seed salva** | Posições fixas no mapa | Permite replay determinístico mantendo a surpresa a cada nova partida |
+| **CanvasLayer para PauseMenu** | Cena filha com `process_mode` | Garante renderização acima de tudo (layer 30) e funcionamento independente do `paused` |
+| **`_draw()` na cutscene** | Sprites externos | Cutscene de tsunami inteiramente procedural, sem assets externos |
+| **Pixel art 320×180 (3×)** | Resolução nativa maior | Estética coerente com a proposta, performance garantida em qualquer hardware |
+
+---
+
+## Resultados
+
+O jogo foi validado como entrega funcional da disciplina de PAC com todos os requisitos funcionais (RF01–RF07) e não-funcionais (RNF01–RNF05) implementados e verificados.
+
+A Fase 1 — *Ecos do Silêncio* — está completa e jogável:
+- Motor narrativo FSM com 5 estados ambientais
+- Sistema de save/load com 3 slots independentes
+- 6 tipos de objetos de memória interativos
+- Cutscene de tsunami renderizada proceduralmente
+
+---
+
+## Como Adicionar Novo Conteúdo
+
+### Adicionar um Novo Objeto de Memória
+
+1. Na cena `fase1_ecos_silencio.tscn`, instancie um nó filho de `memory_object.tscn`
+2. No Inspector, configure os campos `@export`:
+   - `narrative_text`: fala exibida ao interagir
+   - `item_type`: nome do item adicionado ao inventário (deve estar em `ITEM_TEXTURES` do HUD)
+   - `has_flashback`: marque para abrir o overlay de flashback
+   - `use_photo_overlay`: marque para abrir a foto (re-examinável)
+3. Nenhuma alteração de código é necessária
+
+### Adicionar um Novo Checkpoint
+
+1. Instancie `checkpoint.tscn` na cena da fase
+2. Defina `@export var checkpoint_id: int` com o próximo número sequencial
+3. Adicione a posição X de spawn correspondente em `game_manager.gd`:
+   ```gdscript
+   const _CHECKPOINT_X := { 0: 80.0, 1: 700.0, 2: 2200.0, 3: 4500.0, 4: SUA_POSICAO }
+   ```
+
+### Adicionar uma Nova Fala Narrativa
+
+Em `game_manager.gd`, adicione ao dicionário `NARRATIVAS`:
+
+```gdscript
+const NARRATIVAS := {
+    # ... existentes ...
+    "minha_chave": "Texto que aparece na tela.",
+}
+```
+
+Dispare com: `gm.show_custom_narrative("Texto direto")` ou `_show_narrative("minha_chave")`.
+
+---
+
+## Instruções de Execução
+
+### Baixar no itch.io
+
+1. Acesse a página do jogo no **itch.io** e baixe o arquivo `.zip` para Windows
+2. Extraia o `.zip` e execute `ichigo.exe`
+
+### Executar localmente
+
+1. Instale o [Godot Engine 4.5](https://godotengine.org/download)
+2. Clone o repositório:
+   ```bash
+   git clone https://github.com/anacstralioti/portfolio-catolica.git
+   cd portfolio-catolica
+   ```
+3. Abra o Godot → **File → Open Project** → selecione a pasta do projeto
+4. Pressione **F5** ou clique em **Play** para executar
+
+### Exportar para Windows
+
+1. No Godot: **Project → Export → Windows Desktop**
+2. Configure o caminho de saída e clique em **Export Project**
+3. O executável `.exe` será gerado na pasta configurada
+
+---
+
+## Trabalhos Futuros
+
+* Implementar as **Fases 2 e 3**
+
+---
+
+## Licenciamento
+
+* **Código do jogo**: [Licença MIT](https://opensource.org/licenses/MIT)
+* **Godot Engine**: [Licença MIT](https://opensource.org/licenses/MIT)
+* **Arte e assets originais**: [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR)
+* **Áudio**: [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR)
+
+---

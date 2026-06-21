@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://tqqu4aavr42n"]
+[gd_scene load_steps=75 format=3 uid="uid://tqqu4aavr42n"]
 
 [ext_resource type="Script" uid="uid://qkfxm4lvh8a2" path="res://scripts/game_manager.gd" id="1_gm"]
 [ext_resource type="Script" uid="uid://t3m10ftmmd08" path="res://scripts/player.gd" id="2_pl"]
@@ -58,6 +58,8 @@
 [ext_resource type="Script" path="res://scripts/sand_castle.gd" id="45_sc"]
 [ext_resource type="Texture2D" path="res://sprites/obstacles/sand_castle.svg" id="46_scx"]
 [ext_resource type="Texture2D" path="res://sprites/obstacles/log_a.svg" id="47_log"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="50_pm"]
+[ext_resource type="Script" path="res://scripts/radio.gd" id="51_radio"]
 
 [sub_resource type="RectangleShape2D" id="rs_ground"]
 size = Vector2(6400, 20)
@@ -117,6 +119,9 @@ radius = 18.0
 
 [sub_resource type="RectangleShape2D" id="rs_trigger"]
 size = Vector2(50, 35)
+
+[sub_resource type="RectangleShape2D" id="rs_trunk"]
+size = Vector2(50, 20)
 
 [sub_resource type="SpriteFrames" id="sf_ichigo"]
 animations = [{
@@ -875,12 +880,18 @@ horizontal_alignment = 1
 [node name="TriggersLayer" type="Node2D" parent="World"]
 
 [node name="TroncoVisual" type="Sprite2D" parent="World/TriggersLayer"]
-position = Vector2(258, 208)
-scale = Vector2(0.22, 0.22)
+position = Vector2(258, 198)
+scale = Vector2(0.85, 0.85)
 texture = ExtResource("47_log")
 
+[node name="TroncoCol" type="StaticBody2D" parent="World/TriggersLayer"]
+position = Vector2(258, 199)
+
+[node name="TroncoColShape" type="CollisionShape2D" parent="World/TriggersLayer/TroncoCol"]
+shape = SubResource("rs_trunk")
+
 [node name="ZonaTronco" type="Area2D" parent="World/TriggersLayer"]
-position = Vector2(270, 210)
+position = Vector2(258, 198)
 script = ExtResource("31_tz")
 narrative_text = "Um tronco arrastado pelo mar. De onde teria vindo?"
 
@@ -891,6 +902,7 @@ shape = SubResource("rs_trigger")
 position = Vector2(5630, 202)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("42_rd")
+script = ExtResource("51_radio")
 
 [node name="ZonaRadio" type="Area2D" parent="World/TriggersLayer"]
 position = Vector2(5630, 204)
@@ -1027,10 +1039,10 @@ color = Color(1, 0.95, 0.5, 0)
 
 [node name="NarrativeUI" type="Control" parent="UI"]
 layout_mode = 3
-anchor_left = 0.1
-anchor_top = 0.58
-anchor_right = 0.9
-anchor_bottom = 0.76
+anchor_left = 0.08
+anchor_top = 0.56
+anchor_right = 0.92
+anchor_bottom = 0.82
 mouse_filter = 2
 script = ExtResource("5_na")
 
@@ -1039,7 +1051,13 @@ layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_colors/font_color = Color(0.94, 0.9, 0.76, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.65)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PauseMenu" parent="." instance=ExtResource("50_pm")]
 autowrap_mode = 3

@@ -1,11 +1,12 @@
 extends Control
 
-## Placeholder da Fase 2 — Ruínas do Oceano
-## Substitua esta cena pela implementação completa da Fase 2.
+# Placeholder da Fase 2, tela "em breve" mostrada após a cutscene do tsunami.
+# Quando qualquer tecla é pressionada, faz fade-out e retorna ao menu principal.
 
 var _can_input := false
 
 func _ready() -> void:
+	# Fade-in ao entrar; libera input apenas após o fade completar
 	modulate.a = 0.0
 	var tw := create_tween()
 	tw.tween_property(self, "modulate:a", 1.0, 1.0)

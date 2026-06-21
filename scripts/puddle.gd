@@ -1,5 +1,7 @@
 extends Area2D
-# puddle.gd
+
+# Poça, Area2D que notifica o player ao entrar/sair, reduzindo sua velocidade.
+# A lógica de redução de velocidade (PUDDLE_SLOW = 0.45) fica no player.gd.
 
 func _ready() -> void:
 	add_to_group("puddle")

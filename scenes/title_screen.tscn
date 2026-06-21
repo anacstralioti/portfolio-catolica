@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://btitlscr0001"]
 
-[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_ts"]
+[ext_resource type="Script" uid="uid://x4ipuw7yf6wt" path="res://scripts/title_screen.gd" id="1_ts"]
 
 [node name="TitleScreen" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_ts")
 
 [node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -18,6 +20,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="TitleImage" type="TextureRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -25,57 +28,112 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.72, 1)
+theme_override_colors/font_shadow_color = Color(0.04, 0.02, 0.1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 16
+text = "ICHIGO"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 28.0
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.92, 0.84, 0.64, 0.85)
+theme_override_colors/font_shadow_color = Color(0.04, 0.02, 0.1, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 8
+text = "Memórias do Oceano"
+horizontal_alignment = 1
+
 [node name="MenuOverlay" type="ColorRect" parent="."]
-anchor_left = 0.0
-anchor_top = 1.0
+layout_mode = 0
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -78.0
-grow_horizontal = 2
-color = Color(0, 0, 0, 0.65)
+offset_left = -108.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.02, 0.03, 0.1, 0.52)
+
+[node name="MenuDivider" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 107.0
+offset_right = 314.0
+offset_bottom = 108.0
+color = Color(0.85, 0.72, 0.48, 0.55)
 
 [node name="MenuNovoJogo" type="Label" parent="."]
-offset_left = 135.0
-offset_top = 113.0
-offset_right = 272.0
-offset_bottom = 125.0
+layout_mode = 0
+offset_left = 234.0
+offset_top = 111.0
+offset_right = 316.0
+offset_bottom = 120.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.75)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 8
 text = "Novo Jogo"
-theme_override_font_sizes/font_size = 10
 
 [node name="MenuContinuar" type="Label" parent="."]
-offset_left = 135.0
-offset_top = 128.0
-offset_right = 272.0
-offset_bottom = 140.0
+layout_mode = 0
+offset_left = 234.0
+offset_top = 122.0
+offset_right = 316.0
+offset_bottom = 131.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.75)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 8
 text = "Continuar"
-theme_override_font_sizes/font_size = 10
 
 [node name="MenuCreditos" type="Label" parent="."]
-offset_left = 135.0
-offset_top = 143.0
-offset_right = 272.0
-offset_bottom = 155.0
+layout_mode = 0
+offset_left = 234.0
+offset_top = 133.0
+offset_right = 316.0
+offset_bottom = 142.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.75)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 8
 text = "Créditos"
-theme_override_font_sizes/font_size = 10
 
 [node name="MenuSair" type="Label" parent="."]
-offset_left = 135.0
-offset_top = 158.0
-offset_right = 272.0
-offset_bottom = 170.0
+layout_mode = 0
+offset_left = 234.0
+offset_top = 144.0
+offset_right = 316.0
+offset_bottom = 153.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.75)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 8
 text = "Sair"
-theme_override_font_sizes/font_size = 10
 
 [node name="Cursor" type="Label" parent="."]
-offset_left = 122.0
-offset_top = 113.0
-offset_right = 135.0
-offset_bottom = 125.0
+layout_mode = 0
+offset_left = 225.0
+offset_top = 111.0
+offset_right = 234.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 8
 text = "►"
-theme_override_font_sizes/font_size = 10
 
 [node name="CreditsPanel" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -83,38 +141,108 @@ grow_vertical = 2
 color = Color(0.02, 0.02, 0.06, 0.96)
 
 [node name="CreditsTitle" type="Label" parent="CreditsPanel"]
-offset_left = 0.0
+layout_mode = 0
 offset_top = 34.0
 offset_right = 320.0
 offset_bottom = 50.0
-text = "Créditos"
 theme_override_font_sizes/font_size = 14
+text = "Créditos"
 horizontal_alignment = 1
 
 [node name="CreditsText" type="Label" parent="CreditsPanel"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 58.0
 offset_right = 300.0
 offset_bottom = 160.0
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_font_sizes/font_size = 9
 text = "Direção, Arte e Programação
-[seu nome]
-
-Música
-[compositor]
+Ana Carolina Fanhani Stralioti
 
 Motor
 Godot Engine 4.5"
-theme_override_font_sizes/font_size = 9
-theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="CreditsClose" type="Label" parent="CreditsPanel"]
-offset_left = 0.0
+layout_mode = 0
 offset_top = 164.0
 offset_right = 320.0
 offset_bottom = 176.0
-text = "[ESC] Voltar"
-theme_override_font_sizes/font_size = 8
 theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 8
+text = "[ESC] Voltar"
+horizontal_alignment = 1
+
+[node name="SaveSlotPanel" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.06, 0.96)
+
+[node name="SlotTitle" type="Label" parent="SaveSlotPanel"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 320.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 11
+text = "SELECIONAR SLOT"
+horizontal_alignment = 1
+
+[node name="SlotDivider" type="ColorRect" parent="SaveSlotPanel"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 56.0
+offset_right = 260.0
+offset_bottom = 58.0
+color = Color(0.35, 0.35, 0.45, 0.7)
+
+[node name="SlotCursor" type="Label" parent="SaveSlotPanel"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 70.0
+offset_right = 72.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 10
+text = "►"
+
+[node name="Slot1Label" type="Label" parent="SaveSlotPanel"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 70.0
+offset_right = 262.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 10
+text = "Slot 1 — [Vazio]"
+
+[node name="Slot2Label" type="Label" parent="SaveSlotPanel"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 96.0
+offset_right = 262.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 10
+text = "Slot 2 — [Vazio]"
+
+[node name="Slot3Label" type="Label" parent="SaveSlotPanel"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 122.0
+offset_right = 262.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 10
+text = "Slot 3 — [Vazio]"
+
+[node name="SlotHint" type="Label" parent="SaveSlotPanel"]
+layout_mode = 0
+offset_top = 160.0
+offset_right = 320.0
+offset_bottom = 172.0
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 8
+text = "[E] Selecionar   [DEL] Apagar   [ESC] Voltar"
 horizontal_alignment = 1
