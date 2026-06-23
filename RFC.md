@@ -119,21 +119,19 @@ Este trabalho trata do desenvolvimento do projeto de portfólio “Ichigo: Memó
 
 A Fase 1 “Ecos do Silêncio” foi implementada e exportada para Windows (.exe), hospedada no itch.io. Todos os marcos planejados foram concluídos:
 
-  - ✅ Assets visuais criados no Aseprite (sprites, cenário, HUD, overlays);
-  - ✅ Telas principais implementadas: menu inicial com 3 slots de save, HUD com inventário de 8 slots, menu de pausa com confirmação;
-  - ✅ FSM narrativa com 5 estados (INICIO → RECONHECIMENTO → LEMBRANCA → CONFRONTO → RESOLUCAO), com transições de clima, narrativa e detritos;
-  - ✅ Testes de jogabilidade realizados com 4 participantes via formulário (75% perceberam mudança de clima sem instrução);
-  - ✅ Documentação técnica completa (RFC, GDD, Documentação Técnica, README);
-  - ✅ Sistema de save/load com 3 slots independentes em JSON local;
-  - ✅ Áudio gerado proceduralmente: ondas do mar, trovões, tempestade, melodia de caixinha de música e efeitos de ação — sem arquivos externos;
-  - ✅ Cutscene de tsunami renderizada inteiramente por código (sem sprites externos);
-  - ✅ Testes automatizados com GUT (85 testes em 5 arquivos cobrindo FSM, inventário, áudio, save e coletáveis).
+  - Assets visuais criados no Aseprite (sprites, cenário, HUD, overlays);
+  - Telas principais implementadas: menu inicial com 3 slots de save, HUD com inventário de 8 slots, menu de pausa com confirmação;
+  - FSM narrativa com 5 estados (INICIO → RECONHECIMENTO → LEMBRANCA → CONFRONTO → RESOLUCAO), com transições de clima, narrativa e detritos;
+  - Testes de jogabilidade realizados com 4 participantes via formulário (75% perceberam mudança de clima sem instrução);
+  - Documentação técnica completa (RFC, GDD, Documentação Técnica, README);
+  - Sistema de save/load com 3 slots independentes em JSON local;
+  - Cutscene de tsunami;
+  - Testes automatizados com GUT (85 testes em 5 arquivos cobrindo FSM, inventário, áudio, save e coletáveis).
 
 ### 4.2. Próximos Passos
 
   - Implementar a Fase 2 — “Ruínas do Oceano” (atualmente placeholder);
-  - Implementar a Fase 3 — “Horizonte de Esperança”;
-  - Adicionar CI/CD com GitHub Actions para exportação automática.
+  - Implementar a Fase 3 — “Horizonte de Esperança”.
 
 ## 5. Referências
 
